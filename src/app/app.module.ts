@@ -5,18 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PreloginContainerComponent } from './Common/prelogin-container/prelogin-container.component';
 import { PostloginContainerComponent } from './Common/postlogin-container/postlogin-container.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PreloginContainerComponent,
-    PostloginContainerComponent
+    PostloginContainerComponent,
+    TestComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
