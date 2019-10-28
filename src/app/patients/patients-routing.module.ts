@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: '', component: PatientListComponent},
   {path: ':id', component: PatientDetailsComponent},
   {path: ':id/manage', component: PatientManageComponent},
-  {path: ':id/Consulatations', loadChildren: () =>
+  {path: ':id/consultations', loadChildren: () =>
   import('../consultation/consultation.module').then(m => m.ConsultationModule)}
 
 ];
