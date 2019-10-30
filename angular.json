@@ -5,7 +5,17 @@
   "projects": {
     "DrSenil": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        },
+        "@ngrx/angular:component": {
+          "styleext": "scss"
+        },
+        "@ngrx/angular:container": {
+          "styleext": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "hrs",
@@ -24,9 +34,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/scss/bootstrap.scss",
+              "src/scss/app.core.scss",
+              "src/scss/app.icons.scss",
+              "src/scss/theme-demo.scss",
+              "src/scss/app.angular.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/pace-js/pace.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -63,7 +81,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "DrSenil:build"
+            "browserTarget": "DrSenil:build",
+            "port": 3355
           },
           "configurations": {
             "production": {
