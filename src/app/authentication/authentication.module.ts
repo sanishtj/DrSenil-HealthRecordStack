@@ -5,6 +5,12 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { LoginComponent } from '../authentication/login/login.component';
 import { ForgotPasswordComponent } from '../authentication/forgot-password/forgot-password.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './state/auth.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './state/auth.effects';
+
 
 
 @NgModule({
@@ -12,7 +18,12 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
-    RouterModule
+    RouterModule,
+    SharedModule,
+    StoreModule.forFeature('auth', reducer),
+    EffectsModule.forFeature(
+      [ AuthEffects ]
+    ),
   ]
 })
 export class AuthenticationModule { }

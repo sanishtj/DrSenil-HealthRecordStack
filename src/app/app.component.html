@@ -1,10 +1,64 @@
-<div class="page-wrapper">
+<div class="page-wrapper" *ngIf="isPreLogin">
   <div class="page-inner bg-brand-gradient">
     <div class="page-content-wrapper bg-transparent m-0">
       <div class="height-10 w-100 shadow-lg px-4 bg-brand-gradient">
         <div class="d-flex align-items-center container p-0">
-          <div class="page-logo width-mobile-auto m-0 align-items-center
-           justify-content-center p-0 bg-transparent bg-img-none shadow-0 height-9">
+          <div
+            class="page-logo width-mobile-auto m-0 align-items-center
+           justify-content-center p-0 bg-transparent bg-img-none shadow-0 height-9"
+          >
+            <a
+              [routerLink]="['profile']"
+              class="page-logo-link press-scale-down d-flex align-items-center"
+            >
+              <img
+                src="assets/img/logo.png"
+                alt="Dr.Senil-Health Record Stack"
+                aria-roledescription="logo"
+              />
+              <span class="page-logo-text mr-1"
+                >Dr.Senil - Health Record Stack</span
+              >
+            </a>
+          </div>
+          <a
+            [routerLink]="['auth', 'login']"
+            class="btn-link text-white ml-auto mr-2"
+          >
+            Secure Login
+          </a>
+        </div>
+      </div>
+      <div
+        class="flex-1"
+        style="background: url(assets/img/svg/pattern-1.svg) no-repeat center bottom fixed; background-size: cover;"
+      >
+        <div class="container py-4 py-lg-5 my-lg-5 px-4 px-sm-0">
+            <div [@routeAnimations]="prepareRoute(outlet)" >
+                <router-outlet #outlet="outlet"></router-outlet>
+              </div>
+
+          <div
+            class="position-absolute pos-bottom pos-left pos-right p-3 text-center text-white"
+          >
+            2020 © Health Record Stack
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-wrapper" *ngIf="!isPreLogin">
+  <div class="page-inner bg-brand-gradient">
+    <div class="page-content-wrapper bg-transparent m-0">
+      <div class="height-10 w-100 shadow-lg px-4 bg-brand-gradient">
+        <div class="d-flex align-items-center container p-0">
+          <div
+            class="page-logo width-mobile-auto m-0 align-items-center
+             justify-content-center p-0 bg-transparent bg-img-none shadow-0 height-9"
+          >
             <a
               href="javascript:void(0)"
               class="page-logo-link press-scale-down d-flex align-items-center"
@@ -18,7 +72,7 @@
             </a>
           </div>
           <a href="page_register.html" class="btn-link text-white ml-auto">
-            Create Account
+            Create Account = {{ isPreLogin }}
           </a>
         </div>
       </div>
@@ -27,7 +81,10 @@
         style="background: url(assets/img/svg/pattern-1.svg) no-repeat center bottom fixed; background-size: cover;"
       >
         <div class="container py-4 py-lg-5 my-lg-5 px-4 px-sm-0">
-          <router-outlet></router-outlet>
+          <main id="js-page-content" role="main" class="page-content">
+            <router-outlet></router-outlet>
+          </main>
+
           <div
             class="position-absolute pos-bottom pos-left pos-right p-3 text-center text-white"
           >

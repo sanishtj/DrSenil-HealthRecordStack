@@ -6,7 +6,7 @@ import { AuthComponentDetectorService } from './auth-component-detector.service'
 
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent, data: {animation: 'auth'}},
   {path: 'forgotpassword', component: ForgotPasswordComponent},
   {path: '', redirectTo: '/auth/login', pathMatch: 'full'}
 ];
