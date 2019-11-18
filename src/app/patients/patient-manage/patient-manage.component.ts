@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Patientinfo } from 'src/app/models/patientinfo';
 
 @Component({
   selector: 'hrs-patient-manage',
@@ -6,10 +8,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./patient-manage.component.css']
 })
 export class PatientManageComponent implements OnInit {
+  patientInfoForm: FormGroup;
 
-  constructor() { }
+  patientInfo: Patientinfo = new Patientinfo();
+
+  constructor(private formBuilder: FormBuilder) {
+    //this.patientInfo.FullName = 'test';
+    this.patientInfoForm = this.formBuilder.group({
+      fullname: [this.patientInfo.FullName, [Validators.required]],
+      dob: [this.patientInfo.DOB, [Validators.required]],
+      mobile: [this.patientInfo.Mobile, [Validators.required]],
+      email: [this.patientInfo.Email, [Validators.required, Validators.email]]
+    });
+   }
 
   ngOnInit() {
+    //Fetch from service and then patch or set
+    this.patientInfoForm.patchValue({
+      fullname: 'test 123'
+    });
+   // this.patientInfo.FullName = 'test';
+  }
+
+  onDateSelected(date: Date){
+    console.log(date);
+  }
+
+  onSubmit() {
+    console.log(this.patientInfoForm.value);
   }
 
 }

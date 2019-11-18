@@ -20,13 +20,13 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: () =>
       import('./dashboard/dashboard.module').then(m => m.DashboardModule),
-      data: {isPreLogin: false}
+      data: {isPreLogin: false, animation: 'dashboard'}
   },
   {
     path: 'patients',
     loadChildren: () =>
       import('./patients/patients.module').then(m => m.PatientsModule),
-      data: {isPreLogin: false}
+      data: {isPreLogin: false, animation: 'patientmodule'}
   },
   { path: '', redirectTo: '/profile', pathMatch: 'full' },
   { path: '**', redirectTo: '/profile', pathMatch: 'full' }

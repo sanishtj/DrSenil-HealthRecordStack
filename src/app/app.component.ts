@@ -30,4 +30,8 @@ export class AppComponent implements OnInit {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
   }
 
+  logout(){
+
+  }
+
 }

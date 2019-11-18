@@ -1,1 +1,68 @@
-<p>patient-manage works!</p>
+<hrs-widget>
+  <div widget-header>
+    <h2>Add New Patient</h2>
+  </div>
+  <div widget-content>
+    <form (ngSubmit)="onSubmit()" [formGroup]="patientInfoForm">
+      <div class="row">
+        <div class="col-6">
+          <hrs-form-group controlname="FullName" controllabel="Full Name">
+            <input
+              type="text"
+              class="form-control is-invalid"
+              id="fullname"
+              name="fullname"
+              required=""
+              formControlName="fullname"
+            />
+            <div class="invalid-feedback">
+              Please enter a message in the textarea.
+            </div>
+          </hrs-form-group>
+        </div>
+        <div class="col-6">
+          <hrs-form-group controlname="DOB" controllabel="Date of Birth">
+              <hrs-datepicker id="dob" formControlName="dob" ></hrs-datepicker>
+          </hrs-form-group>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <hrs-form-group controlname="Mobile" controllabel="Mobile Number">
+            <input
+              type="text"
+              class="form-control is-invalid"
+              id="Mobile"
+              required=""
+              formControlName="mobile"
+            />
+            <div class="invalid-feedback">
+              Please enter a message in the textarea.
+            </div>
+          </hrs-form-group>
+        </div>
+        <div class="col-6">
+          <hrs-form-group controlname="Email" controllabel="Email">
+            <input
+              type="text"
+              class="form-control is-invalid"
+              id="Email"
+              required=""
+              formControlName="email"
+            />
+            <div class="invalid-feedback">
+              Please enter a message in the textarea.
+            </div>
+          </hrs-form-group>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <button type="submit">Add Patient</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</hrs-widget>

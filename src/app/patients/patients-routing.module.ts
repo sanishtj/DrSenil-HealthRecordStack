@@ -6,9 +6,9 @@ import { PatientManageComponent } from './patient-manage/patient-manage.componen
 
 
 const routes: Routes = [
-  {path: '', component: PatientListComponent},
-  {path: ':id', component: PatientDetailsComponent},
-  {path: ':id/manage', component: PatientManageComponent},
+  {path: '', component: PatientListComponent, data: {animation: 'patients'}},
+  {path: ':id', component: PatientDetailsComponent, data: {animation: 'patient'}},
+  {path: ':id/manage', component: PatientManageComponent, data: {animation: 'managepatient'}},
   {path: ':id/consultations', loadChildren: () =>
   import('../consultation/consultation.module').then(m => m.ConsultationModule)}
 

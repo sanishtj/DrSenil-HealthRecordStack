@@ -33,16 +33,14 @@
         </h1>
         <div class="card p-4 rounded-plus bg-faded">
             <form id="js-login" (ngSubmit)="onSubmit()" [formGroup]="userForm">
-                <div class="form-group">
-                    <label class="form-label" for="username">Username</label>
-                    <hrs-textbox autocomplete="off" type="email" id="username"
+              <hrs-form-group controlname='username' controllabel='User Name'>
+                <hrs-textbox autocomplete="off" type="email" id="username"
                      placeholder ="your id or email" [form]="userForm" helptext="Your unique username to app" [validationMessage]="emailValidationMessage" ></hrs-textbox>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="password">Password</label>
-                    <hrs-textbox [autocomplete]="'off'" [type]="'password'" [id]="'password'"
-                     [placeholder]="'password'" [form]="userForm" helptext="Your password" [validationMessage]="passwordValidationMessage"></hrs-textbox>
-                </div>
+              </hrs-form-group>
+              <hrs-form-group controlname='password' controllabel='Password'>
+                <hrs-textbox [autocomplete]="'off'" [type]="'password'" [id]="'password'"
+                [placeholder]="'password'" [form]="userForm" helptext="Your password" [validationMessage]="passwordValidationMessage"></hrs-textbox>
+              </hrs-form-group>
                 <div class="form-group text-left">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="rememberme">
