@@ -30,16 +30,17 @@ export class HrsDatepickerComponent implements ControlValueAccessor {
 
   private _ID = '';
 
-  @Input('value') _value = new Date();
+  // tslint:disable-next-line: no-input-rename
+  @Input('value') v = new Date();
   onChange: any = () => {};
   onTouched: any = () => {};
 
   get value() {
-    return this._value;
+    return this.v;
   }
 
   set value(val) {
-    this._value = val;
+    this.v = val;
     this.onChange(val);
     this.onTouched();
   }

@@ -11,12 +11,17 @@ import { DiagnosisComponent } from './diagnosis/diagnosis.component';
 import { PrintComponent } from './print/print.component';
 import { ConsulationManageComponent } from './consulation-manage/consulation-manage.component';
 
-
 @NgModule({
-  declarations: [ConsulationListComponent, ConsulationDetailsComponent, ComorbiditiesComponent, ExaminationsComponent, InvestigationsComponent, DiagnosisComponent, PrintComponent, ConsulationManageComponent],
-  imports: [
-    CommonModule,
-    ConsultationRoutingModule
-  ]
+  declarations: [
+    ConsulationListComponent,
+    ConsulationDetailsComponent,
+    ComorbiditiesComponent,
+    ExaminationsComponent,
+    InvestigationsComponent,
+    DiagnosisComponent,
+    PrintComponent,
+    ConsulationManageComponent
+  ],
+  imports: [CommonModule, ConsultationRoutingModule]
 })
-export class ConsultationModule { }
+export class ConsultationModule {}

@@ -1,48 +1,78 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { textboxScaleAnimation } from 'src/app/animations/textboxscale.animation';
-import { FormGroup } from '@angular/forms';
+import { Component, Input, forwardRef, HostBinding } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'hrs-textbox',
   templateUrl: './hrs-textbox.component.html',
   styleUrls: ['./hrs-textbox.component.scss'],
-  animations: [textboxScaleAnimation]
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => HrsTextboxComponent),
+      multi: true
+    }
+  ]
 })
-export class HrsTextboxComponent implements OnInit {
+export class HrsTextboxComponent implements ControlValueAccessor {
   @Input() placeholder: string;
-  @Input() autocomplete = 'off';
   @Input() type: string;
-  @Input() id: string;
-  @Input() disableAnimation: boolean;
-  @Input() form: FormGroup;
-  @Input() helptext: string;
-  @Input() validationMessage: string;
+  @Input() isInValid: boolean;
 
-  textboxState = 'out';
 
-  constructor() { }
 
-  ngOnInit() {
-    if (this.disableAnimation) {
-      this.textboxState = '';
+  @HostBinding('attr.id')
+  externalId = '';
+
+  @Input()
+  set id(value: string) {
+    this._ID = value;
+    this.externalId = null;
+  }
+
+  get id() {
+    return this._ID;
+  }
+
+  private _ID = '';
+
+  // tslint:disable-next-line: no-input-rename
+  @Input('value') v = '';
+  onChange: any = () => {};
+  onTouched: any = () => {};
+
+  get value() {
+    return this.v;
+  }
+
+  set value(val) {
+    this.v = val;
+    this.onChange(val);
+    this.onTouched();
+  }
+
+  constructor() {}
+
+  registerOnChange(fn) {
+    this.onChange = fn;
+  }
+
+  writeValue(value) {
+    if (value) {
+      this.value = value;
     }
   }
 
-  focusFunction() {
-
-    if (this.disableAnimation) {
-      this.textboxState = '';
-    } else {
-    this.textboxState = 'in';
-    }
+  registerOnTouched(fn) {
+    this.onTouched = fn;
   }
 
-  focusOutFunction() {
 
-    if (this.disableAnimation) {
-      this.textboxState = '';
-    } else {
-    this.textboxState = 'out';
-    }
+  textinput(val) {
+    console.log(val);
+    this.value = val;
   }
+
+
+
+
 }

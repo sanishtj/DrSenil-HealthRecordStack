@@ -13,7 +13,7 @@ export class PatientManageComponent implements OnInit {
   patientInfo: Patientinfo = new Patientinfo();
 
   constructor(private formBuilder: FormBuilder) {
-    //this.patientInfo.FullName = 'test';
+
     this.patientInfoForm = this.formBuilder.group({
       fullname: [this.patientInfo.FullName, [Validators.required]],
       dob: [this.patientInfo.DOB, [Validators.required]],
@@ -23,14 +23,14 @@ export class PatientManageComponent implements OnInit {
    }
 
   ngOnInit() {
-    //Fetch from service and then patch or set
+
     this.patientInfoForm.patchValue({
       fullname: 'test 123'
     });
    // this.patientInfo.FullName = 'test';
   }
 
-  onDateSelected(date: Date){
+  onDateSelected(date: Date) {
     console.log(date);
   }
 

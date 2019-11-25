@@ -1,19 +1,11 @@
-<div [formGroup]="form">
   <input
-    [autocomplete]="autocomplete"
-    [@textboxscale]="textboxState"
-    (focus)="focusFunction()"
-    (focusout)="focusOutFunction()"
+    autocomplete="off"
     [type]="type"
     [id]="id"
     class="form-control form-control-lg"
+    [ngClass]="{'is-invalid': isInValid}"
     [placeholder]="placeholder"
-    [formControlName]="id"
-    [ngClass]="{'is-invalid' : validationMessage}"
+    (input)="textinput($event.target.value)"
   />
 
-  <div class="invalid-feedback" *ngIf="validationMessage">
-    {{ validationMessage }}
-  </div>
-  <div *ngIf="helptext" class="help-block">{{ helptext }}</div>
-</div>
+

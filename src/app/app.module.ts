@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PreloginContainerComponent } from './Common/prelogin-container/prelogin-container.component';
 import { PostloginContainerComponent } from './Common/postlogin-container/postlogin-container.component';
-import { TestComponent } from './test/test.component';
 import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -19,7 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     PreloginContainerComponent,
     PostloginContainerComponent,
-    TestComponent
+
   ],
   imports: [
     BrowserModule,
