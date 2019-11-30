@@ -1,5 +1,5 @@
 <div class="input-group">
-    <input [id]="id" class="form-control" placeholder="yyyy-mm-dd"
+    <input [id]="id" class="form-control form-control-lg" placeholder="yyyy-mm-dd"
            name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (dateSelect)="onDateSelect($event)">
     <div class="input-group-append">
         <span class="input-group-text fs-xl calendarcursor" (click)="d.toggle()">
