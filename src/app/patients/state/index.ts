@@ -1,7 +1,10 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromPatients from './patient.reducer';
+import * as fromRoot from '../../state/app.state';
 
-
+export interface State extends fromRoot.AppState {
+  products: fromPatients.PatientState;
+}
 // Selector functions
 const getPatientFeatureState = createFeatureSelector<fromPatients.PatientState>('patients');
 
@@ -28,7 +31,7 @@ export const getCurrentProduct = createSelector(
   }
 );
 
-export const getPatient = createSelector(
+export const getPatients = createSelector(
   getPatientFeatureState,
   state => state.patients
 );

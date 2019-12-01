@@ -10,10 +10,12 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { reducer } from './state/patient.reducer';
 import { PatientEffects } from './state/patient.effects';
+import { PatientListDatatableComponent } from './patient-list-datatable/patient-list-datatable.component';
+import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
-  declarations: [PatientListComponent, PatientDetailsComponent, PatientManageComponent],
+  declarations: [PatientListComponent, PatientDetailsComponent, PatientManageComponent, PatientListDatatableComponent],
   imports: [
     CommonModule,
     PatientsRoutingModule,
@@ -22,6 +24,7 @@ import { PatientEffects } from './state/patient.effects';
     EffectsModule.forFeature(
       [ PatientEffects ]
     ),
+    DataTablesModule
   ]
 })
 export class PatientsModule { }

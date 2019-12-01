@@ -19,7 +19,12 @@ import { HrsButtonComponent } from './hrs-button/hrs-button.component';
     HrsValidationMessageComponent,
     HrsButtonComponent
   ],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgbModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule
+  ],
   exports: [
     HrsValidationMessageComponent,
     HrsTextboxComponent,

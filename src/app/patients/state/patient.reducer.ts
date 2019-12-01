@@ -17,6 +17,17 @@ const initialState: PatientState = {
 
 export function reducer(state = initialState, action: PatientActions): PatientState {
   switch (action.type) {
+    case PatientActionTypes.FETCHPATIENTSSUCCESS:
+      return {
+        ...state,
+        patients: action.payload,
+        error: ''
+      };
+      case PatientActionTypes.FETCHPATIENTSFAILURE:
+      return {
+        ...state,
+        error: action.payload
+      };
     case PatientActionTypes.ADDPATIENTSUCCESS:
       return {
         ...state,

@@ -26,4 +26,17 @@ export class PatientEffects {
       )
     )
   );
+
+  @Effect()
+  fetchPatients$: Observable<Action> = this.actions$.pipe(
+    ofType(patientActions.PatientActionTypes.FETCHPATIENTS),
+    mergeMap(action =>
+      this.patientService.getPatients().pipe(
+        map(patients => (new patientActions.FetchPatientsSuccess(patients))),
+        catchError(err => of(new patientActions.FetchPatientsFail(err)))
+      )
+    )
+  );
+
 }
+

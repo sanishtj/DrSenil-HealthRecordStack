@@ -3,7 +3,7 @@
     <h2>Add New Patient</h2>
   </div>
   <div widget-content>
-    <form (ngSubmit)="onSubmit($event)" [formGroup]="patientInfoForm">
+    <form [formGroup]="patientInfoForm">
       <div class="row">
         <div class="col-6">
           <hrs-form-group controlname="FullName" controllabel="Full Name">

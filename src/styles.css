@@ -1,3 +1,20 @@
-.invalid-feedback{
+.invalid-feedback {
   display: block !important;
+}
+
+.dataTables_empty {
+  display: none;
+}
+/*
+.dataTable tbody tr {
+  background-color: dimgray !important;
+} */
+
+.table-dark.table-striped tbody tr:nth-of-type(even){
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+
+.table-dark.table-striped tbody tr:nth-of-type(even):hover{
+  background-color: #6ab5b4;
 }

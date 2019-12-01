@@ -41,14 +41,11 @@ export class PatientManageComponent implements OnInit {
 
 
   addPatientAndContinue() {
-
-    if (this.patientInfoForm.status === 'VALID') {
-
-    }
+    this.submitForm();
 
 }
 
-addPatient() {
+submitForm() {
   if (this.patientInfoForm.status === 'VALID') {
     const payload = new Patientinfo();
     payload.FullName = this.fullname.value;
@@ -57,6 +54,10 @@ addPatient() {
     payload.Email = this.email.value;
     this.store.dispatch(new AddPatient(payload));
   }
+}
+
+addPatient() {
+  this.submitForm();
 }
 
 

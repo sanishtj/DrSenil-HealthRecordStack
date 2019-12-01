@@ -3,6 +3,9 @@ import { Patientinfo } from 'src/app/models/patientinfo';
 
 
 export enum PatientActionTypes {
+  FETCHPATIENTS = '[Patient] FetchPatients',
+  FETCHPATIENTSSUCCESS = '[Patient] FetchPatientsSuccess',
+  FETCHPATIENTSFAILURE = '[Patient] FetchPatientsFailiure',
   ADDPATIENT = '[Patient] AddPatient',
   ADDPATIENTSUCCESS = '[Patient] AddpatientSuccess',
   ADDPATIENTFAILURE = '[Patient] AddpatientFailiure',
@@ -12,6 +15,21 @@ export enum PatientActionTypes {
   DELETEPATIENT = '[Patient] DeletePatient',
   DELETEPATIENTSUCCESS = '[Patient] DeletePatientSuccess',
   DELETEPATIENTFAILURE = '[Patient] DeletePatientFailure',
+}
+
+export class FetchPatients implements Action {
+  readonly type = PatientActionTypes.FETCHPATIENTS;
+  constructor() {}
+}
+
+export class FetchPatientsSuccess implements Action {
+  readonly type = PatientActionTypes.FETCHPATIENTSSUCCESS;
+  constructor(public payload: Patientinfo[]) {}
+}
+
+export class FetchPatientsFail implements Action {
+  readonly type = PatientActionTypes.FETCHPATIENTSFAILURE;
+  constructor(public payload: string) {}
 }
 
 export class AddPatient implements Action {
@@ -29,6 +47,7 @@ export class AddpatientFailiure implements Action {
   constructor(public payload: string) {}
 }
 
-export type PatientActions = AddPatient | AddpatientSuccess | AddpatientFailiure;
+export type PatientActions = AddPatient | AddpatientSuccess | AddpatientFailiure
+| FetchPatients | FetchPatientsSuccess | FetchPatientsFail;
 
 
