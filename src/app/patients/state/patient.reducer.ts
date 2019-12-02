@@ -17,6 +17,23 @@ const initialState: PatientState = {
 
 export function reducer(state = initialState, action: PatientActions): PatientState {
   switch (action.type) {
+    case PatientActionTypes.SETCURRENTPATIENT:
+      return {
+        ...state,
+        currentPatientId: action.payload.Id
+      };
+
+    case PatientActionTypes.CLEARCURRENTPATIENT:
+      return {
+        ...state,
+        currentPatientId: null
+      };
+
+    case PatientActionTypes.INITIALIZECURRENTPATIENT:
+      return {
+        ...state,
+        currentPatientId: '0'
+      };
     case PatientActionTypes.FETCHPATIENTSSUCCESS:
       return {
         ...state,

@@ -17,7 +17,7 @@ export class HrsDatepickerComponent implements ControlValueAccessor {
   @HostBinding('attr.id')
   externalId = '';
 
-  model: string;
+  model: any;
   @Input()
   set id(value: string) {
     this._ID = value;
@@ -54,6 +54,7 @@ export class HrsDatepickerComponent implements ControlValueAccessor {
   writeValue(value) {
     if (value) {
       this.value = value;
+      this.model = { day: value.getUTCDay(), month: value.getUTCMonth(), year: value.getUTCFullYear()};
     }
   }
 

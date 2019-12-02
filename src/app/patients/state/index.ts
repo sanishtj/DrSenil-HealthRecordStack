@@ -3,7 +3,7 @@ import * as fromPatients from './patient.reducer';
 import * as fromRoot from '../../state/app.state';
 
 export interface State extends fromRoot.AppState {
-  products: fromPatients.PatientState;
+  patients: fromPatients.PatientState;
 }
 // Selector functions
 const getPatientFeatureState = createFeatureSelector<fromPatients.PatientState>('patients');
@@ -13,10 +13,11 @@ export const getcurrentPatientId = createSelector(
   state => state.currentPatientId
 );
 
-export const getCurrentProduct = createSelector(
+export const getCurrentPatient = createSelector(
   getPatientFeatureState,
   getcurrentPatientId,
   (state, currentPatientId) => {
+
       if (currentPatientId === '0' || currentPatientId == null) {
           return {
               Id: null,

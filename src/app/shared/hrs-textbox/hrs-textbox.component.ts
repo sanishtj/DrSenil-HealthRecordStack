@@ -1,4 +1,11 @@
-import { Component, Input, forwardRef, HostBinding } from '@angular/core';
+import {
+  Component,
+  Input,
+  forwardRef,
+  HostBinding,
+  ViewChild,
+  Renderer2
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -14,11 +21,11 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class HrsTextboxComponent implements ControlValueAccessor {
+  @ViewChild('inputElm', { static: true }) inputElmnt;
+
   @Input() placeholder: string;
   @Input() type: string;
   @Input() isInValid: boolean;
-
-
 
   @HostBinding('attr.id')
   externalId = '';
@@ -50,7 +57,7 @@ export class HrsTextboxComponent implements ControlValueAccessor {
     this.onTouched();
   }
 
-  constructor() {}
+  constructor(private renderer: Renderer2) {}
 
   registerOnChange(fn) {
     this.onChange = fn;
@@ -59,6 +66,8 @@ export class HrsTextboxComponent implements ControlValueAccessor {
   writeValue(value) {
     if (value) {
       this.value = value;
+      const input = this.inputElmnt.nativeElement;
+      this.renderer.setProperty(input, 'value', value);
     }
   }
 
@@ -66,13 +75,8 @@ export class HrsTextboxComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-
   textinput(val) {
     console.log(val);
     this.value = val;
   }
-
-
-
-
 }

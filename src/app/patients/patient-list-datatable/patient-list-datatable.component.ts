@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DataTablesResponse } from 'src/app/models/data-tables-response';
 import { Patientinfo } from 'src/app/models/patientinfo';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { SetCurrentPatient } from '../state/patient.actions';
+import { AppState } from 'src/app/state/app.state';
 
 @Component({
   selector: 'hrs-patient-list-datatable',
@@ -8,25 +11,23 @@ import { Patientinfo } from 'src/app/models/patientinfo';
   styleUrls: ['./patient-list-datatable.component.scss']
 })
 export class PatientListDatatableComponent implements OnInit {
-
   @Input() patients: Patientinfo[];
   dtOptions: DataTables.Settings = {};
 
-  constructor() {}
+  constructor(private router: Router, private store: Store<AppState>) {}
 
   ngOnInit(): void {
     const that = this;
 
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 5,
-      columns: [
-        { data: 'Id' },
-        { data: 'FullName' },
-        { data: 'DOB' },
-        { data: 'Mobile' },
-        { data: 'Email' }
-      ]
+      pageLength: 5
     };
+  }
+
+  EditPatient(patient: Patientinfo) {
+    this.store.dispatch(new SetCurrentPatient(patient));
+
+    this.router.navigateByUrl('/patients/' + patient.Id + '/manage');
   }
 }

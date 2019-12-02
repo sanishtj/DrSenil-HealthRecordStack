@@ -3,6 +3,10 @@ import { Patientinfo } from 'src/app/models/patientinfo';
 
 
 export enum PatientActionTypes {
+  SETCURRENTPATIENT = '[Patient] SetCurrentPatient',
+  GETCURRENTPATIENT = '[Patient] GetCurrentPatient',
+  CLEARCURRENTPATIENT = '[Patient] ClearCurrentPatient',
+  INITIALIZECURRENTPATIENT = '[Patient] InitializeCurrentPatient',
   FETCHPATIENTS = '[Patient] FetchPatients',
   FETCHPATIENTSSUCCESS = '[Patient] FetchPatientsSuccess',
   FETCHPATIENTSFAILURE = '[Patient] FetchPatientsFailiure',
@@ -15,6 +19,24 @@ export enum PatientActionTypes {
   DELETEPATIENT = '[Patient] DeletePatient',
   DELETEPATIENTSUCCESS = '[Patient] DeletePatientSuccess',
   DELETEPATIENTFAILURE = '[Patient] DeletePatientFailure',
+}
+
+export class GettCurrentPatient implements Action {
+  readonly type = PatientActionTypes.GETCURRENTPATIENT;
+  constructor(public payload: string) { }
+}
+
+export class SetCurrentPatient implements Action {
+  readonly type = PatientActionTypes.SETCURRENTPATIENT;
+  constructor(public payload: Patientinfo) { }
+}
+
+export class ClearCurrentPatient implements Action {
+  readonly type = PatientActionTypes.CLEARCURRENTPATIENT;
+}
+
+export class InitializeCurrentPatient implements Action {
+  readonly type = PatientActionTypes.INITIALIZECURRENTPATIENT;
 }
 
 export class FetchPatients implements Action {
@@ -48,6 +70,8 @@ export class AddpatientFailiure implements Action {
 }
 
 export type PatientActions = AddPatient | AddpatientSuccess | AddpatientFailiure
-| FetchPatients | FetchPatientsSuccess | FetchPatientsFail;
+| FetchPatients | FetchPatientsSuccess | FetchPatientsFail | SetCurrentPatient |
+ClearCurrentPatient | InitializeCurrentPatient;
+
 
 

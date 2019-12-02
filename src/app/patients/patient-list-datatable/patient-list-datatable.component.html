@@ -2,9 +2,9 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Moobile Number</th>
+      <th>Name</th>
+      <th>DOB</th>
+      <th>Mobile</th>
       <th>Email</th>
       <th></th>
       <th></th>
@@ -14,10 +14,10 @@
       <tr *ngFor="let patient of patients">
           <td>{{ patient.Id }}</td>
           <td>{{ patient.FullName }}</td>
-          <td>{{ patient.DOB }}</td>
+          <td>{{ patient.DOB | date: 'mediumDate' }}</td>
           <td>{{ patient.Mobile }}</td>
           <td>{{ patient.Email }}</td>
-          <td><a href="#">Edit</a></td>
+          <td><a (click)="EditPatient(patient)">Edit</a></td>
           <td><a href="#">Remove</a></td>
       </tr>
   </tbody>
