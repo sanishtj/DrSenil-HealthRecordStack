@@ -38,5 +38,29 @@ export class PatientEffects {
     )
   );
 
+  @Effect()
+  updatePatient$: Observable<Action> = this.actions$.pipe(
+    ofType(patientActions.PatientActionTypes.UPDATEPATIENT),
+    map((action: patientActions.UpdatePatient) => action.payload),
+    mergeMap((patient: Patientinfo) =>
+      this.patientService.updatePatient(patient).pipe(
+        map(updatedPatient => (new patientActions.UpdatePatientSuccess(updatedPatient))),
+        catchError(err => of(new patientActions.UpdatePatientFailiure(err)))
+      )
+    )
+  );
+
+  @Effect()
+  deletePatient$: Observable<Action> = this.actions$.pipe(
+    ofType(patientActions.PatientActionTypes.DELETEPATIENT),
+    map((action: patientActions.DeletePatient) => action.payload),
+    mergeMap((PatientId: string) =>
+      this.patientService.deletePatient(PatientId).pipe(
+        map(() => (new patientActions.DeletePatientSuccess(PatientId))),
+        catchError(err => of(new patientActions.DeletePatientFail(err)))
+      )
+    )
+  );
+
 }
 

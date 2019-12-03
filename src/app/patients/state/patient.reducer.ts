@@ -57,6 +57,34 @@ export function reducer(state = initialState, action: PatientActions): PatientSt
         ...state,
         error: action.payload
       };
+      case PatientActionTypes.UPDATEPATIENTSUCCESS:
+      const updatedPatients = state.patients.map(
+        item => action.payload.Id === item.Id ? action.payload : item);
+      return {
+        ...state,
+        patients: updatedPatients,
+        currentPatientId: action.payload.Id,
+        error: ''
+      };
+
+    case PatientActionTypes.UPDATEPATIENTFAILURE:
+      return {
+        ...state,
+        error: action.payload
+      };
+      case PatientActionTypes.DELETEPATIENTSUCCESS:
+      return {
+        ...state,
+        patients: state.patients.filter(patient => patient.Id !== action.payload),
+        currentPatientId: null,
+        error: ''
+      };
+
+    case PatientActionTypes.DELETEPATIENTFAILURE:
+      return {
+        ...state,
+        error: action.payload
+      };
       default:
         return state;
     }

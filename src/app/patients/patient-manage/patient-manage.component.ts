@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Patientinfo } from 'src/app/models/patientinfo';
 import { emailFormatValidator } from 'src/app/shared/validations/emailformat.directive';
 import { mobileFormatValidator } from 'src/app/shared/validations/mobileformat.directive';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/state/app.state';
-import { AddPatient, SetCurrentPatient } from '../state/patient.actions';
+import { AddPatient, UpdatePatient } from '../state/patient.actions';
 import { Observable } from 'rxjs';
 import * as fromPatients from '../state';
 
@@ -19,11 +19,13 @@ export class PatientManageComponent implements OnInit {
   patientInfoForm: FormGroup;
   selectedPatient: Patientinfo;
   patientInfo: Patientinfo = new Patientinfo();
+  isEdit: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
     private store: Store<AppState>,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.patientInfoForm = this.formBuilder.group({
       fullname: [
@@ -43,11 +45,15 @@ export class PatientManageComponent implements OnInit {
   }
 
   ngOnInit() {
-    // const id: string = this.route.snapshot.paramMap.get('id');
+    const id: string = this.route.snapshot.paramMap.get('id');
+    if (id != null || id !== '0') {
+      this.isEdit = true;
+    } else {
+      this.isEdit = false;
+    }
     this.store
       .pipe(select(fromPatients.getCurrentPatient))
       .subscribe((patient: Patientinfo) => {
-
         this.patientInfoForm.patchValue({
           fullname: patient.FullName,
           dob: patient.DOB,
@@ -68,17 +74,27 @@ export class PatientManageComponent implements OnInit {
 
   submitForm() {
     if (this.patientInfoForm.status === 'VALID') {
+
       const payload = new Patientinfo();
       payload.FullName = this.fullname.value;
       payload.DOB = this.dob.value;
       payload.Mobile = this.mobile.value;
       payload.Email = this.email.value;
-      this.store.dispatch(new AddPatient(payload));
+      if (!this.isEdit) { this.store.dispatch(new AddPatient(payload)); } else {
+        const id: string = this.route.snapshot.paramMap.get('id');
+        payload.Id = id;
+        this.store.dispatch(new UpdatePatient(payload));
+      }
     }
   }
 
   addPatient() {
     this.submitForm();
+  }
+
+  updatePatient() {
+    this.submitForm();
+    this.router.navigate(['patients']);
   }
 
   get fullname() {

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Patientinfo } from 'src/app/models/patientinfo';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { SetCurrentPatient } from '../state/patient.actions';
+import { SetCurrentPatient, DeletePatient } from '../state/patient.actions';
 import { AppState } from 'src/app/state/app.state';
 
 @Component({
@@ -29,5 +29,11 @@ export class PatientListDatatableComponent implements OnInit {
     this.store.dispatch(new SetCurrentPatient(patient));
 
     this.router.navigateByUrl('/patients/' + patient.Id + '/manage');
+  }
+
+  RemovePatient(patient: Patientinfo) {
+    this.store.dispatch(new SetCurrentPatient(patient));
+    this.store.dispatch(new DeletePatient(patient.Id));
+    this.router.navigate(['patients']);
   }
 }

@@ -43,15 +43,16 @@ export class PatinetService {
     return of(newPatient);
   }
 
-  deletePatient(id: number): Observable<{}> {
-    // this.patientList.splice( list.indexOf('foo'), 1 );
-    return of(true);
+  deletePatient(id: string): Observable<{}> {
+    this.patientList.filter(patient => patient.Id !== id);
+    return of(id);
   }
 
   updatePatient(patient: Patientinfo): Observable<Patientinfo> {
 
-    const newPatient = { ...patient, id: null };
-    return of(newPatient);
+    const foundIndex = this.patientList.findIndex(x => x.Id === patient.Id);
+    this.patientList[foundIndex] = patient;
+    return of(patient);
   }
 
   private handleError(err) {

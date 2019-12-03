@@ -69,9 +69,40 @@ export class AddpatientFailiure implements Action {
   constructor(public payload: string) {}
 }
 
+export class UpdatePatient implements Action {
+  readonly type = PatientActionTypes.UPDATEPATIENT;
+  constructor(public payload: Patientinfo) {}
+}
+
+export class UpdatePatientSuccess implements Action {
+  readonly type = PatientActionTypes.UPDATEPATIENTSUCCESS;
+  constructor(public payload: Patientinfo) {}
+}
+
+export class UpdatePatientFailiure implements Action {
+  readonly type = PatientActionTypes.UPDATEPATIENTFAILURE;
+  constructor(public payload: string) {}
+}
+
+export class DeletePatient implements Action {
+  readonly type = PatientActionTypes.DELETEPATIENT;
+  constructor(public payload: string) { }
+}
+
+export class DeletePatientSuccess implements Action {
+  readonly type = PatientActionTypes.DELETEPATIENTSUCCESS;
+  constructor(public payload: string) { }
+}
+
+export class DeletePatientFail implements Action {
+  readonly type = PatientActionTypes.DELETEPATIENTFAILURE;
+  constructor(public payload: string) { }
+}
+
 export type PatientActions = AddPatient | AddpatientSuccess | AddpatientFailiure
 | FetchPatients | FetchPatientsSuccess | FetchPatientsFail | SetCurrentPatient |
-ClearCurrentPatient | InitializeCurrentPatient;
+ClearCurrentPatient | InitializeCurrentPatient | UpdatePatient | UpdatePatientSuccess
+| UpdatePatientFailiure | DeletePatient | DeletePatientSuccess | DeletePatientFail;
 
 
 

@@ -18,7 +18,7 @@
           <td>{{ patient.Mobile }}</td>
           <td>{{ patient.Email }}</td>
           <td><a (click)="EditPatient(patient)">Edit</a></td>
-          <td><a href="#">Remove</a></td>
+          <td><a (click)="RemovePatient(patient)">Remove</a></td>
       </tr>
   </tbody>
   <tbody *ngIf="patients?.length == 0">

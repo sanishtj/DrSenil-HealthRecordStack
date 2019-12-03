@@ -109,7 +109,7 @@
       </div>
 
       <div class="row">
-        <div class="col-12">
+        <div class="col-12" *ngIf="!isEdit">
           <button
             id="add"
             type="button"
@@ -125,6 +125,16 @@
             class="btn btn-lg btn-success waves-effect waves-themed float-right mr-2"
           >
             Add Patient
+          </button>
+        </div>
+        <div class="col-12" *ngIf="isEdit">
+          <button
+            id="addngo"
+            type="button"
+            (click)="updatePatient()"
+            class="btn btn-lg btn-success waves-effect waves-themed float-right mr-2"
+          >
+            Update Patient
           </button>
         </div>
       </div>
