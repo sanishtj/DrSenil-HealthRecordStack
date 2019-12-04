@@ -1,2 +1,77 @@
-<p>consulation-manage works!</p>
-<router-outlet></router-outlet>
+<div id="stepper1" class="bs-stepper">
+  <div class="bs-stepper-header">
+    <div class="step" data-target="#test-l-1">
+      <button class="step-trigger">
+        <span class="bs-stepper-circle">1</span>
+        <span class="bs-stepper-label">Patient Details</span>
+      </button>
+    </div>
+    <div class="line"></div>
+    <div class="step" data-target="#test-l-2">
+      <button class="step-trigger">
+        <span class="bs-stepper-circle">2</span>
+        <span class="bs-stepper-label">Comorbidities</span>
+      </button>
+    </div>
+    <div class="line"></div>
+    <div class="step" data-target="#test-l-3">
+      <button class="step-trigger">
+        <span class="bs-stepper-circle">3</span>
+        <span class="bs-stepper-label">Examinations</span>
+      </button>
+    </div>
+    <div class="line"></div>
+    <div class="step" data-target="#test-l-4">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">4</span>
+          <span class="bs-stepper-label">Investigations</span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-5">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">5</span>
+            <span class="bs-stepper-label">Diagnosis</span>
+          </button>
+        </div>
+
+  </div>
+  <div class="bs-stepper-content">
+    <hrs-widget>
+      <div widget-header>
+        <h2>Manage Consultation</h2>
+      </div>
+      <div widget-content>
+          <form (ngSubmit)="onSubmit()">
+              <div id="test-l-1" class="content">
+                <hrs-patientdetails></hrs-patientdetails>
+                <button type="button" (click)="next('patientdetails','comorbidities')" class="btn btn-primary">
+                  Next
+                </button>
+              </div>
+              <div id="test-l-2" class="content">
+                <hrs-comorbidities></hrs-comorbidities>
+                <button type="button" (click)="next('comorbidities','examinations')" class="btn btn-primary">Next</button>
+                <button type="button" (click)="prev('comorbidities','patientdetails')" class="btn btn-primary">Previous</button>
+              </div>
+              <div id="test-l-3" class="content">
+                  <hrs-examinations></hrs-examinations>
+                <button type="button" (click)="next('examinations', 'investigations')" class="btn btn-primary mt-5">Next</button>
+              </div>
+              <div id="test-l-4" class="content">
+                  <hrs-investigations></hrs-investigations>
+                <button type="button" (click)="next('investigations', 'diagnosis')" class="btn btn-primary mt-5">Next</button>
+              </div>
+              <div id="test-l-5" class="content">
+                  <hrs-diagnosis></hrs-diagnosis>
+                  <button type="submit" class="btn btn-primary mt-5">Submit</button>
+              </div>
+            </form>
+      </div>
+    </hrs-widget>
+
+
+  </div>
+</div>
+
+

@@ -10,6 +10,8 @@ import { InvestigationsComponent } from './investigations/investigations.compone
 import { DiagnosisComponent } from './diagnosis/diagnosis.component';
 import { PrintComponent } from './print/print.component';
 import { ConsulationManageComponent } from './consulation-manage/consulation-manage.component';
+import { SharedModule } from '../shared/shared.module';
+import { PatientdetailsComponent } from './patientdetails/patientdetails.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +22,9 @@ import { ConsulationManageComponent } from './consulation-manage/consulation-man
     InvestigationsComponent,
     DiagnosisComponent,
     PrintComponent,
-    ConsulationManageComponent
+    ConsulationManageComponent,
+    PatientdetailsComponent
   ],
-  imports: [CommonModule, ConsultationRoutingModule]
+  imports: [CommonModule, ConsultationRoutingModule, SharedModule]
 })
 export class ConsultationModule {}

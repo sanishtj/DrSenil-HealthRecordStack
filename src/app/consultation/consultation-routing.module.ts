@@ -8,20 +8,23 @@ import { ExaminationsComponent } from './examinations/examinations.component';
 import { InvestigationsComponent } from './investigations/investigations.component';
 import { DiagnosisComponent } from './diagnosis/diagnosis.component';
 import { PrintComponent } from './print/print.component';
+import { PatientdetailsComponent } from './patientdetails/patientdetails.component';
 
-const flowRoutes: any[] =  [
-  {path: 'comorbidities', component: ComorbiditiesComponent},
-  {path: 'examinations', component: ExaminationsComponent},
-  {path: 'investigations', component: InvestigationsComponent},
-  {path: 'diagnosis', component: DiagnosisComponent},
-  {path: 'print', component: PrintComponent},
-  {path: '', redirectTo: '/comorbidities', pathMatch: 'full'},
-];
+// const flowRoutes: any[] =  [
+//   {path: 'patientdetails', component: PatientdetailsComponent},
+//   {path: 'comorbidities', component: ComorbiditiesComponent},
+//   {path: 'examinations', component: ExaminationsComponent},
+//   {path: 'investigations', component: InvestigationsComponent},
+//   {path: 'diagnosis', component: DiagnosisComponent},
+//   {path: 'print', component: PrintComponent},
+//   {path: '', redirectTo: '/patientdetails', pathMatch: 'full'},
+// ];
 
 const routes: Routes = [
   {path: '', component: ConsulationListComponent},
-  {path: ':cid', component: ConsulationDetailsComponent, children: flowRoutes},
-  {path: ':cid/manage', component: ConsulationManageComponent, children: flowRoutes }
+  {path: ':cid', component: ConsulationDetailsComponent},
+  {path: ':cid/manage', component: ConsulationManageComponent},
+  {path: ':cid/manage/:step', component: ConsulationManageComponent}
 ];
 
 @NgModule({

@@ -39,6 +39,7 @@
               "src/scss/app.icons.scss",
               "src/scss/theme-demo.scss",
               "src/scss/app.angular.scss",
+              "src/scss/bs-stepper-theme.scss",
               "node_modules/datatables.net-dt/css/jquery.dataTables.css",
               "src/styles.css"
             ],
