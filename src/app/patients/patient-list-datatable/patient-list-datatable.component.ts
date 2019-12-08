@@ -36,4 +36,10 @@ export class PatientListDatatableComponent implements OnInit {
     this.store.dispatch(new DeletePatient(patient.Id));
     this.router.navigate(['patients']);
   }
+
+  AddConsultation(patient: Patientinfo){
+    this.store.dispatch(new SetCurrentPatient(patient));
+
+    this.router.navigateByUrl('/patients/' + patient.Id + '/consultations/0/manage');
+  }
 }

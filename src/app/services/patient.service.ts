@@ -34,6 +34,11 @@ export class PatinetService {
     return of(this.patientList);
   }
 
+  getPatient(id: string): Observable<Patientinfo> {   
+    const patient : Patientinfo = this.patientList.filter(patient => patient.Id === id)[0];
+    return of(patient);
+  }
+
   addPatient(patient: Patientinfo): Observable<Patientinfo> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     // Product Id must be null for the Web API to assign an Id

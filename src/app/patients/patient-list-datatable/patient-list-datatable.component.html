@@ -8,6 +8,7 @@
       <th>Email</th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody *ngIf="patients?.length != 0">
@@ -19,6 +20,7 @@
           <td>{{ patient.Email }}</td>
           <td><a (click)="EditPatient(patient)">Edit</a></td>
           <td><a (click)="RemovePatient(patient)">Remove</a></td>
+          <td><a (click)="AddConsultation(patient)">Add Consultation</a></td>
       </tr>
   </tbody>
   <tbody *ngIf="patients?.length == 0">

@@ -46,7 +46,8 @@ export class PatientManageComponent implements OnInit {
 
   ngOnInit() {
     const id: string = this.route.snapshot.paramMap.get('id');
-    if (id != null || id !== '0') {
+
+    if (id != null && id !== "0") {
       this.isEdit = true;
     } else {
       this.isEdit = false;
@@ -69,10 +70,10 @@ export class PatientManageComponent implements OnInit {
   }
 
   addPatientAndContinue() {
-    this.submitForm();
+    this.submitForm(true);
   }
 
-  submitForm() {
+  submitForm(isContinue: boolean) {
     if (this.patientInfoForm.status === 'VALID') {
 
       const payload = new Patientinfo();
@@ -80,7 +81,16 @@ export class PatientManageComponent implements OnInit {
       payload.DOB = this.dob.value;
       payload.Mobile = this.mobile.value;
       payload.Email = this.email.value;
-      if (!this.isEdit) { this.store.dispatch(new AddPatient(payload)); } else {
+      if (!this.isEdit) {
+        this.store.dispatch(new AddPatient(payload));
+        if (isContinue)
+          this.store
+            .pipe(select(fromPatients.getCurrentPatient))
+            .subscribe((patient: Patientinfo) => {
+              
+              this.router.navigateByUrl(`/patients/${patient.Id}/consultations/0/manage`);
+            });
+      } else {
         const id: string = this.route.snapshot.paramMap.get('id');
         payload.Id = id;
         this.store.dispatch(new UpdatePatient(payload));
@@ -89,11 +99,11 @@ export class PatientManageComponent implements OnInit {
   }
 
   addPatient() {
-    this.submitForm();
+    this.submitForm(false);
   }
 
   updatePatient() {
-    this.submitForm();
+    this.submitForm(false);
     this.router.navigate(['patients']);
   }
 

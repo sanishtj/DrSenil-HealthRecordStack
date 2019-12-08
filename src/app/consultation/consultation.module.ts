@@ -12,6 +12,12 @@ import { PrintComponent } from './print/print.component';
 import { ConsulationManageComponent } from './consulation-manage/consulation-manage.component';
 import { SharedModule } from '../shared/shared.module';
 import { PatientdetailsComponent } from './patientdetails/patientdetails.component';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './state/consultation.reducer';
+import { Consultation } from '../models/consultation';
+import { ConsultationEffects } from './state/consultation.effects';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -25,6 +31,10 @@ import { PatientdetailsComponent } from './patientdetails/patientdetails.compone
     ConsulationManageComponent,
     PatientdetailsComponent
   ],
-  imports: [CommonModule, ConsultationRoutingModule, SharedModule]
+  imports: [CommonModule, ConsultationRoutingModule, SharedModule, StoreModule.forFeature('consultations', reducer),
+    EffectsModule.forFeature(
+      [ConsultationEffects]
+    ),
+    DataTablesModule]
 })
-export class ConsultationModule {}
+export class ConsultationModule { }
