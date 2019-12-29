@@ -1,0 +1,74 @@
+<form [formGroup]="patientInfoForm">
+  <div class="row">
+    <div class="col-12">
+        <hrs-widget>
+          <div widget-header>
+            <h2>Patient Info</h2>
+          </div>
+          <div widget-content>
+      
+            <div class="row">
+              <div class="col-6">
+                <hrs-form-group controlname="FullName" controllabel="Full Name">
+                  <hrs-textbox isDisabled='true' type="text" id="fullname" placeholder="Patient's Full Name"
+                    formControlName="fullname">
+                  </hrs-textbox>
+                </hrs-form-group>
+              </div>
+              <div class="col-6">
+                <hrs-form-group controlname="DOB" controllabel="Date of Birth">
+                  <hrs-datepicker id="dob" formControlName="dob"></hrs-datepicker>
+                </hrs-form-group>
+              </div>
+            </div>
+      
+            <div class="row">
+              <div class="col-6">
+                <hrs-form-group controlname="Mobile" controllabel="Mobile Number">
+                  <hrs-textbox isDisabled='true' type="text" id="mobile" placeholder="Patient's mobile number"
+                    formControlName="mobile">
+                  </hrs-textbox>
+      
+                </hrs-form-group>
+              </div>
+              <div class="col-6">
+                <hrs-form-group controlname="Email" controllabel="Email">
+                  <hrs-textbox isDisabled='true' type="text" id="email" placeholder="Patient's email" formControlName="email">
+                  </hrs-textbox>
+      
+                </hrs-form-group>
+              </div>
+            </div>            
+      
+          </div>
+        </hrs-widget>
+      
+        <hrs-widget>
+          <div widget-header>
+            <h2>Presenting Complaints</h2>
+          </div>
+          <div widget-content>
+              <textarea class="form-control form-control-lg" id="PresentingComplaints" rows="3" formControlName="presentingcomplaints"></textarea>
+          </div>
+        </hrs-widget>
+      
+        <hrs-widget>
+          <div widget-header>
+            <h2>Significant Past History</h2>
+          </div>
+          <div widget-content>
+              <textarea class="form-control form-control-lg" id="SignificantPastHistory" rows="3" formControlName="significantpasthistory"></textarea>
+          </div>
+        </hrs-widget>
+    </div>
+  </div>
+  
+  <div class="row">
+      <div class="col-12">
+          <button id="addngo" type="button" (click)="addPatientAdditionalInfo()"
+          class="btn btn-lg btn-success waves-effect waves-themed float-right">
+          Save & Continue
+        </button>
+      </div>
+    </div>
+</form>

@@ -1,0 +1,18 @@
+<!-- 
+  <input type="checkbox" id="toggle-button-checkbox"
+      (change)="changed.emit($event.target.checked)" [attr.disabled]="disabled ? '' : null">
+    <label class="toggle-button-switch"  
+      for="toggle-button-checkbox"></label>
+    <div class="toggle-button-text">
+      <div class="toggle-button-text-on">Yes</div>
+      <div class="toggle-button-text-off">No</div>
+    </div>
+
+
+   -->
+
+   <div class="custom-control custom-switch">
+    <input #inputElm type="checkbox" (change)="checkChanged($event.target.checked)" class="custom-control-input" [id]="id"
+    [attr.disabled]="disabled ? '' : null">
+    <label class="custom-control-label" [for]="id">{{label}}</label>
+</div>

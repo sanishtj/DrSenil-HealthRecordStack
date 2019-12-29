@@ -6,6 +6,7 @@
     [ngClass]="{'is-invalid': isInValid}"
     [placeholder]="placeholder"
     (input)="textinput($event.target.value)"
+    [disabled]='isDisabled'
   />
 
 

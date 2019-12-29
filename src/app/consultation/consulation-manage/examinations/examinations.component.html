@@ -1,0 +1,376 @@
+<form [formGroup]="examinationsForm">
+    <div class="row">
+        <div class="col-12">
+            <hrs-widget>
+                <div widget-header>
+                    <h2>General Examinations</h2>
+                </div>
+                <div widget-content formGroupName="generalexaminations">
+                    <hrs-content-container>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="BP" controllabel="BP">
+                                    <div class="input-group">
+                                        <input type="text" aria-label="bpsystolic" class="form-control form-control-lg"
+                                            placeholder="Systolic" id="bpsystolic" formControlName="bpsystolic">
+                                        <input type="text" aria-label="bpdiastolic" class="form-control form-control-lg"
+                                            placeholder="Diastolic" id="bpdiastolic" formControlName="bpdiastolic">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">mmHG</span>
+                                        </div>
+                                    </div>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="Pulse" controllabel="Pulse">
+                                    <div class="input-group">
+                                        <input type="text" aria-label="From" class="form-control form-control-lg"
+                                            placeholder="From" id="from" formControlName="pulsefrom">
+                                        <input type="text" aria-label="To" class="form-control form-control-lg"
+                                            placeholder="To" id="to" formControlName="pulseto">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">beats/min</span>
+                                        </div>
+                                    </div>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="Icterus" controllabel="">
+                                    <hrs-toggle-button formControlName="icterus" id="icterus" label="Icterus">
+                                    </hrs-toggle-button>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="Pollar" controllabel="">
+                                    <hrs-toggle-button formControlName="pollar" id="pollar" label="Pollar">
+                                    </hrs-toggle-button>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="LN" controllabel="">
+                                    <hrs-toggle-button formControlName="ln" id="ln" label="LN">
+                                    </hrs-toggle-button>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="Neurofibror" controllabel="">
+                                    <hrs-toggle-button formControlName="neurofibror" id="neurofibror"
+                                        label="Neurofibror">
+                                    </hrs-toggle-button>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="SkinPatch" controllabel="">
+                                    <hrs-toggle-button formControlName="skinpatch" id="skinpatch" label="Skin Patch">
+                                    </hrs-toggle-button>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                    </hrs-content-container>
+                </div>
+            </hrs-widget>
+
+            <hrs-widget>
+                <div widget-header>
+                    <h2>Neurological Examinations</h2>
+                </div>
+                <div widget-content formGroupName="neurologicalexaminations">
+                    <hrs-content-container>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="MMSE" controllabel="MMSE">
+                                    <hrs-file-upload formControlName="mmse"></hrs-file-upload>
+                                </hrs-form-group>
+                            </div>
+
+                        </div>
+
+                    </hrs-content-container>
+                </div>
+            </hrs-widget>
+
+            <hrs-widget>
+                <div widget-header>
+                    <h2>Behaviour Examinations</h2>
+                </div>
+                <div widget-content formGroupName="behaviorexaminations">
+                    <hrs-content-container>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="increasedrage" controllabel="">
+                                    <hrs-toggle-button formControlName="increasedrage" id="increasedrage"
+                                        label="Increased Rage?">
+                                    </hrs-toggle-button>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="behaviordescription" controllabel="Behavior Description">
+                                    <textarea class="form-control form-control-lg" id="behaviordescription" rows="3"
+                                        formControlName="behaviordescription"></textarea>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                    </hrs-content-container>
+                </div>
+            </hrs-widget>
+
+            <hrs-widget>
+                <div widget-header>
+                    <h2>Cranial Nerve Examinations</h2>
+                </div>
+                <div widget-content formGroupName="cranialnerveexaminations">
+                    <hrs-content-container>
+                        <table class="table table-sm m-0 table-striped">
+                            <thead class="bg-primary-500">
+                                <tr>
+                                    <th>Nerves</th>
+                                    <th>Left</th>
+                                    <th>Right</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="align-middle">1</th>
+                                    <td>
+                                        <select class="form-control" formControlName="nerve1left" id="nerve1left">
+                                            <option [value]="null" disabled>Choose an item</option>
+                                            <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                                {{status.Value}}
+                                            </option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select class="form-control" formControlName="nerve1right" id="nerve1right">
+                                            <option [value]="null" disabled>Choose an item</option>
+                                            <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                                {{status.Value}}
+                                            </option>
+                                        </select>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="align-middle">2</th>
+                                    <td><select class="form-control" formControlName="nerver2left" id="nerver2left">
+                                            <option [value]="null" disabled>Choose an item</option>
+                                            <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                                {{status.Value}}
+                                            </option>
+                                        </select></td>
+                                    <td><select class="form-control" formControlName="nerver2right" id="nerver2right">
+                                            <option [value]="null" disabled>Choose an item</option>
+                                            <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                                {{status.Value}}
+                                            </option>
+                                        </select></td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="align-middle">3, 4, 6</th>
+                                    <td><select class="form-control" formControlName="nerver346left" id="nerver346left">
+                                            <option [value]="null" disabled>Choose an item</option>
+                                            <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                                {{status.Value}}
+                                            </option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select class="form-control" formControlName="nerver346right"
+                                            id="nerver346right">
+                                            <option [value]="null" disabled>Choose an item</option>
+                                            <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                                {{status.Value}}
+                                            </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="align-middle">5</th>
+                                    <td><select class="form-control" formControlName="nerver5left" id="nerver5left">
+                                            <option [value]="null" disabled>Choose an item</option>
+                                            <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                                {{status.Value}}
+                                            </option>
+                                        </select></td>
+                                    <td><select class="form-control" formControlName="nerver5right" id="nerver5right">
+                                            <option [value]="null" disabled>Choose an item</option>
+                                            <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                                {{status.Value}}
+                                            </option>
+                                        </select></td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="align-middle">7</th>
+                                    <td><select class="form-control" formControlName="nerver7left" id="nerver7left">
+                                            <option [value]="null" disabled>Choose an item</option>
+                                            <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                                {{status.Value}}
+                                            </option>
+                                        </select></td>
+                                    <td><select class="form-control" formControlName="nerver7right" id="nerver7right">
+                                            <option [value]="null" disabled>Choose an item</option>
+                                            <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                                {{status.Value}}
+                                            </option>
+                                        </select></td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="align-middle">8</th>
+                                    <td><select class="form-control" formControlName="nerver8left" id="nerver8left">
+                                            <option [value]="null" disabled>Choose an item</option>
+                                            <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                                {{status.Value}}
+                                            </option>
+                                        </select></td>
+                                    <td>
+                                        <select class="form-control" formControlName="nerver8right" id="nerver8right">
+                                            <option [value]="null" disabled>Choose an item</option>
+                                            <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                                {{status.Value}}
+                                            </option>
+                                        </select>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="align-middle">9, 10</th>
+                                    <td><select class="form-control" formControlName="nerver910left" id="nerver910left">
+                                            <option [value]="null" disabled>Choose an item</option>
+                                            <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                                {{status.Value}}
+                                            </option>
+                                        </select></td>
+                                    <td><select class="form-control" formControlName="nerver910right"
+                                            id="nerver910right">
+                                            <option [value]="null" disabled>Choose an item</option>
+                                            <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                                {{status.Value}}
+                                            </option>
+                                        </select></td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="align-middle">11</th>
+                                    <td><select class="form-control" formControlName="nerver11left" id="nerver11left">
+                                            <option [value]="null" disabled>Choose an item</option>
+                                            <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                                {{status.Value}}
+                                            </option>
+                                        </select></td>
+                                    <td><select class="form-control" formControlName="nerver11right" id="nerver11right">
+                                            <option [value]="null" disabled>Choose an item</option>
+                                            <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                                {{status.Value}}
+                                            </option>
+                                        </select></td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="align-middle">12</th>
+                                    <td><select class="form-control" formControlName="nerver12left" id="nerver12left">
+                                            <option [value]="null" disabled>Choose an item</option>
+                                            <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                                {{status.Value}}
+                                            </option>
+                                        </select></td>
+                                    <td>
+                                        <select class="form-control" formControlName="nerver12right" id="nerver12right">
+                                            <option [value]="null" disabled>Choose an item</option>
+                                            <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                                {{status.Value}}
+                                            </option>
+                                        </select>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </hrs-content-container>
+                </div>
+            </hrs-widget>
+
+            <hrs-widget>
+                <div widget-header>
+                    <h2>Motor System</h2>
+                </div>
+                <div widget-content formGroupName="motorsystemexaminations">
+                    <hrs-content-container>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="gait" controllabel="GAIT">
+                                    <textarea class="form-control form-control-lg" id="gait" rows="3"
+                                        formControlName="gait"></textarea>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="behaviordescription" controllabel="Tone">
+                                    <select class="form-control form-control-lg" formControlName="tone"
+                                        id="tone">
+                                        <option [value]="null" disabled>Choose an item</option>
+                                        <option *ngFor="let tone of getToneTypes()"
+                                            [value]="tone.Key">
+                                            {{tone.Value}}
+                                        </option>
+                                    </select>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12" formGroupName="power">
+                                <hrs-form-group controlname="Power" controllabel="Power">
+                                    <table class="table table-sm m-0">
+                                        <thead class="bg-primary-500">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Username</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>@fat</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td colspan="2">Larry the Bird</td>
+                                                <td>@twitter</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </hrs-form-group>
+                            </div>                         
+                        </div>
+                    </hrs-content-container>
+                </div>
+            </hrs-widget>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button id="addngo" type="button" (click)="addComorbidities()"
+                class="btn btn-lg btn-success waves-effect waves-themed float-right">
+                Save & Continue
+            </button>
+        </div>
+    </div>
+</form>

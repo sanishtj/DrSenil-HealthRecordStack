@@ -34,7 +34,7 @@ export const getCurrentConsultation = createSelector(
               Email: ''
           };
       } else {
-          return currentConsultationId ? state.consultations.find(p => p.Id === currentConsultationId) : null;
+          return currentConsultationId ? state.consultations.find(p => p.ConsultationId === currentConsultationId) : null;
       }
   }
 );

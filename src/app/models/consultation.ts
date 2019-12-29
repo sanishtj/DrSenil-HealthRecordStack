@@ -1,11 +1,18 @@
 import { Patientinfo } from './patientinfo';
 
 export class Consultation {
-    Id: string;    
+    ConsultationId: string;
+    PatientId: string;
+    AdditionalPatientInfo: AdditionalPatientInfo
     Comorbidities : Comorbidities;
     Examinations : Examinations ;
     Investigations: Investigations;
     Diagnosis : Diagnosis;
+}
+
+export class AdditionalPatientInfo {
+    PresentingComplaints: string;
+    SignificantPastHistory: string;
 }
 
 export class Comorbidities {

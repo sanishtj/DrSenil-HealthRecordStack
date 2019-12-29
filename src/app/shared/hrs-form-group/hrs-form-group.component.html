@@ -1,4 +1,4 @@
 <div class="form-group {{classstring}}">
-    <label class="form-label" for="{{controlname}}">{{controllabel}}</label>
+    <label *ngIf="controllabel" class="form-label" for="{{controlname}}">{{controllabel}}</label>
     <ng-content></ng-content>
 </div>

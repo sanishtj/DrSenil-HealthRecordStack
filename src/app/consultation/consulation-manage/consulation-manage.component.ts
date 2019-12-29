@@ -2,6 +2,11 @@ import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import Stepper from 'bs-stepper';
+import { Store, select } from '@ngrx/store';
+import { AppState } from 'src/app/state/app.state';
+import * as fromConsultation from '../state';
+import { Patientinfo } from 'src/app/models/patientinfo';
+import { GetCurrentPatient } from '../state/consultation.actions';
 
 @Component({
   selector: 'hrs-consulation-manage',
@@ -9,6 +14,7 @@ import Stepper from 'bs-stepper';
   styleUrls: ['./consulation-manage.component.css']
 })
 export class ConsulationManageComponent implements OnInit {
+  private patientDetails: Patientinfo;
   private stepper: Stepper;
   private steps = [
     'patientdetails',
@@ -21,13 +27,13 @@ export class ConsulationManageComponent implements OnInit {
   constructor(
     private location: Location,
     private router: Router,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    private store: Store<AppState>
+  ) { }
 
   next(prevStep, nextStep) {
     this.stepper.next();
-    const url = this.location.path().replace(prevStep, nextStep);
-    this.location.go(url);
+
   }
 
   prev(currentStep, prevStep) {
@@ -38,6 +44,16 @@ export class ConsulationManageComponent implements OnInit {
 
   onSubmit() {
     return false;
+  }
+
+  handlePatientDetails() {
+    debugger;
+    let patientId = this.route.snapshot.paramMap.get('id');
+
+    this.store.dispatch(new GetCurrentPatient(patientId));
+    this.store.pipe(select(fromConsultation.getPatientDetails)).subscribe((patientDetails: Patientinfo) => {
+      this.patientDetails = patientDetails;
+    })
   }
 
   ngOnInit() {
@@ -57,9 +73,11 @@ export class ConsulationManageComponent implements OnInit {
 
     if (!this.route.snapshot.paramMap.get('step')) {
       this.location.go(this.location.path() + '/patientdetails');
+      this.handlePatientDetails();
     } else {
       switch (this.route.snapshot.paramMap.get('step')) {
         case 'patientdetails':
+          this.handlePatientDetails();
           this.stepper.to(1);
           break;
         case 'comorbidities':
@@ -78,5 +96,23 @@ export class ConsulationManageComponent implements OnInit {
           break;
       }
     }
+  }
+
+  patientDetailsNextClick(patientdetails: any) {
+    // Save data and get back the saved object with ID
+    let cId = 1;
+    this.next(patientdetails.from, patientdetails.to);
+    let url = this.updateURL(patientdetails.from, patientdetails.to);
+    
+    if (url.indexOf('/0/') !== -1) {
+      url = this.updateURL('/0/', `/${cId}/`);
+      //this.location.go(url);
+    }
+  }
+
+  updateURL(from: string, to: string): string {
+    const url = this.location.path().replace(from, to);
+    this.location.go(url);
+    return url;
   }
 }

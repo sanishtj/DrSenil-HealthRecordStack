@@ -3,12 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { ConsulationDetailsComponent } from './consulation-details/consulation-details.component';
 import { ConsulationManageComponent } from './consulation-manage/consulation-manage.component';
 import { ConsulationListComponent } from './consulation-list/consulation-list.component';
-import { ComorbiditiesComponent } from './comorbidities/comorbidities.component';
-import { ExaminationsComponent } from './examinations/examinations.component';
-import { InvestigationsComponent } from './investigations/investigations.component';
-import { DiagnosisComponent } from './diagnosis/diagnosis.component';
+import { ComorbiditiesComponent } from './consulation-manage/comorbidities/comorbidities.component';
+import { ExaminationsComponent } from './consulation-manage/examinations/examinations.component';
+import { InvestigationsComponent } from './consulation-manage/investigations/investigations.component';
+import { DiagnosisComponent } from './consulation-manage/diagnosis/diagnosis.component';
 import { PrintComponent } from './print/print.component';
-import { PatientdetailsComponent } from './patientdetails/patientdetails.component';
+import { PatientdetailsComponent } from './consulation-manage/patientdetails/patientdetails.component';
 
 // const flowRoutes: any[] =  [
 //   {path: 'patientdetails', component: PatientdetailsComponent},

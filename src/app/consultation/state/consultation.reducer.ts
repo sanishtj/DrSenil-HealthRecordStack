@@ -34,7 +34,7 @@ export interface ConsultationState {
       case ConsultationActionTypes.SETCURRENTCONSULTATION:
         return {
           ...state,
-          currentConsultationId: action.payload.Id
+          currentConsultationId: action.payload.ConsultationId
         };
   
       case ConsultationActionTypes.CLEARCURRENTCONSULTATION:
@@ -63,7 +63,7 @@ export interface ConsultationState {
         return {
           ...state,
           consultations: [...state.consultations, action.payload],
-          currentConsultationId: action.payload.Id,
+          currentConsultationId: action.payload.ConsultationId,
           error: ''
         };
         case ConsultationActionTypes.ADDCONSULTATIONFAILURE:
@@ -73,11 +73,11 @@ export interface ConsultationState {
         };
         case ConsultationActionTypes.UPDATECONSULTATIONSUCCESS:
         const updatedConsultations = state.consultations.map(
-          item => action.payload.Id === item.Id ? action.payload : item);
+          item => action.payload.ConsultationId === item.ConsultationId ? action.payload : item);
         return {
           ...state,
           consultations: updatedConsultations,
-          currentConsultationId: action.payload.Id,
+          currentConsultationId: action.payload.ConsultationId,
           error: ''
         };
   
@@ -89,7 +89,7 @@ export interface ConsultationState {
         case ConsultationActionTypes.DELETECONSULTATIONSUCCESS:
         return {
           ...state,
-          consultations: state.consultations.filter(patient => patient.Id !== action.payload),
+          consultations: state.consultations.filter(consultation => consultation.ConsultationId !== action.payload),
           currentConsultationId: null,
           error: ''
         };

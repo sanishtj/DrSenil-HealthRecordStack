@@ -1,0 +1,249 @@
+<form [formGroup]="comorbiditiesForm">
+    <div class="row">
+        <div class="col-12">
+            <hrs-widget>
+                <div widget-header>
+                    <h2>Associated Comorbidities</h2>
+                </div>
+                <div widget-content formGroupName="associatedcomorbidities">
+                    <hrs-content-container>
+                        <div class="row">
+                            <div class="col-12">
+                                <hrs-form-group controlname="Diabetic" controllabel="">
+                                    <hrs-toggle-button formControlName="isdiabetic" id="isdiabetic" label="Diabetic?">
+                                    </hrs-toggle-button>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="MedicineType" controllabel="Medicine Type">
+                                    <select class="form-control form-control-lg" formControlName="medicinetype"
+                                        id="medicinetype">
+                                        <option [value]="null" disabled>Choose an item</option>
+                                        <option *ngFor="let consumption of getDiabeticMedicineTypes()"
+                                            [value]="consumption.Key">
+                                            {{consumption.Value}}
+                                        </option>
+                                    </select>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="MedicineName" controllabel="Medicine Name">
+                                    <hrs-textbox type="text" id="medicinename"
+                                        placeholder="" formControlName="medicinename">
+                                    </hrs-textbox>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                    </hrs-content-container>
+
+                    <hrs-content-container>
+                        <div class="row">
+                            <div class="col-12">
+                                <hrs-form-group controlname="COPD" controllabel="">
+                                    <hrs-toggle-button formControlName="iscopd" label="COPD?" id="iscopd">
+                                    </hrs-toggle-button>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-toggle-button formControlName="isontreatment" id="isontreatment" label="On Treatment?">
+                                </hrs-toggle-button>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="TreatmentDetails" controllabel="Treatment Details">
+                                    <textarea class="form-control form-control-lg" id="TreatmentDetails" rows="3" formControlName="copdnote"></textarea>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                    </hrs-content-container>
+
+                    <hrs-content-container>
+                        <div class="row">
+                            <div class="col-12">
+                                <hrs-form-group controlname="TB" controllabel="">
+                                    <hrs-toggle-button formControlName="istb" label="TB?" id="istb">
+                                    </hrs-toggle-button>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="Parts" controllabel="Parts">
+                                    <select class="form-control form-control-lg" formControlName="part" multiple
+                                    id="part">                                    
+                                    <option *ngFor="let part of getTBParts()"
+                                        [value]="part.Key">
+                                        {{part.Value}}
+                                    </option>
+                                </select>
+                                </hrs-form-group>
+                            </div>                            
+                        </div>
+                    </hrs-content-container>
+
+                    <hrs-content-container>
+                        <div class="row">
+                            <div class="col-12">
+                                <hrs-form-group controlname="HormonalIllness" controllabel="">
+                                    <hrs-toggle-button formControlName="ishormonalillness" label="Hormonal Illness?" id="ishormonalillness">
+                                    </hrs-toggle-button>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="Pituitary" controllabel="Pituitary">
+                                    <textarea class="form-control form-control-lg" id="pituitary" rows="3" formControlName="pituitary"></textarea>
+                                </hrs-form-group>
+                            </div>  
+                            <div class="col-6">
+                                <hrs-form-group controlname="Adrenal" controllabel="Adrenal">
+                                    <textarea class="form-control form-control-lg" id="adrenal" rows="3" formControlName="adrenal"></textarea>
+                                </hrs-form-group>
+                            </div>                           
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="Thyroid" controllabel="Thyroid">
+                                    <textarea class="form-control form-control-lg" id="thyroid" rows="3" formControlName="thyroid"></textarea>
+                                </hrs-form-group>
+                            </div>                                                         
+                        </div>
+                    </hrs-content-container>
+                </div>
+            </hrs-widget>
+
+            <hrs-widget>
+                <div widget-header>
+                    <h2>Gynec</h2>
+                </div>
+                <div widget-content formGroupName="gynec">
+                    <hrs-content-container>
+                        <div class="row">
+                            <div class="col-12">
+                                <hrs-form-group controlname="Pregnancyhistory" controllabel="Pregnancy History">
+                                    <textarea class="form-control form-control-lg" id="pregnancyhistory" rows="3" formControlName="pregnancyhistory"></textarea>
+                                </hrs-form-group>
+                            </div>
+                        </div>                        
+                    </hrs-content-container>
+
+                    <hrs-content-container>
+                        <div class="row">
+                            <div class="col-12">
+                                <hrs-form-group controlname="Menstrualhistory" controllabel="Menstrual History">
+                                    <textarea class="form-control form-control-lg" id="menstrualhistory" rows="3" formControlName="menstrualhistory"></textarea>
+                                </hrs-form-group>
+                            </div>
+                        </div>                        
+                    </hrs-content-container>
+
+                   
+                </div>
+            </hrs-widget>
+
+            <hrs-widget>
+                <div widget-header>
+                    <h2>Personal History</h2>
+                </div>
+                <div widget-content formGroupName="personalhistory">
+                    <hrs-content-container>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="AlcoholConsumption" controllabel="Alcohol Consumption">
+                                    <select class="form-control form-control-lg" formControlName="alcohol"
+                                    id="alcohol">
+                                    <option [value]="null" disabled>Choose an item</option>
+                                    <option *ngFor="let consumption of getAlcoholConsumption()"
+                                        [value]="consumption.Key">
+                                        {{consumption.Value}}
+                                    </option>
+                                </select>
+                                </hrs-form-group>
+                               
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="SmokePanConsumption" controllabel="Smoke/Pan Consumption">
+                                    <select class="form-control form-control-lg" formControlName="smokepan"
+                                    id="smokepan">
+                                    <option [value]="null" disabled>Choose an item</option>
+                                    <option *ngFor="let consumption of getSmokePanConsumption()"
+                                        [value]="consumption.Key">
+                                        {{consumption.Value}}
+                                    </option>
+                                </select>
+                                </hrs-form-group>
+                                
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="DrugConsumption" controllabel="Drug Consumption">
+                                    <select class="form-control form-control-lg" formControlName="drug"
+                                        id="drug">
+                                        <option [value]="null" disabled>Choose an item</option>
+                                        <option *ngFor="let consumption of getDrugConsumption()"
+                                            [value]="consumption.Key">
+                                            {{consumption.Value}}
+                                        </option>
+                                    </select>
+                                </hrs-form-group>
+                                
+                            </div>     
+                            <div class="col-6">
+                                <hrs-form-group controlname="Allergy" controllabel="Allergy">
+                                    <hrs-textbox type="text" id="allergy" placeholder="" formControlName="allergy">
+                                    </hrs-textbox>
+                                </hrs-form-group>
+                            </div>                       
+                        </div>                        
+                    </hrs-content-container>
+                </div>
+            </hrs-widget>
+
+            <hrs-widget>
+                <div widget-header>
+                    <h2>Family History</h2>
+                </div>
+                <div widget-content formGroupName="familyhistory">
+                    <hrs-content-container>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="Cancer" controllabel="Cancer">
+                                    <textarea class="form-control form-control-lg" id="cancer" rows="3" formControlName="cancer"></textarea>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="Diabetic" controllabel="Diabetic">
+                                    <textarea class="form-control form-control-lg" id="diabetic" rows="3" formControlName="diabetic"></textarea>
+                                </hrs-form-group>
+                            </div>
+                        </div>                        
+                   
+                        <div class="row">
+                            <div class="col-12">
+                                <hrs-form-group controlname="BP" controllabel="BP">
+                                    <textarea class="form-control form-control-lg" id="bp" rows="3" formControlName="bp"></textarea>
+                                </hrs-form-group>
+                            </div>
+                        </div>                        
+                    </hrs-content-container>
+
+                   
+                </div>
+            </hrs-widget>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button id="addngo" type="button" (click)="addComorbidities()"
+                class="btn btn-lg btn-success waves-effect waves-themed float-right">
+                Save & Continue
+            </button>
+        </div>
+    </div>
+</form>

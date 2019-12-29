@@ -55,7 +55,7 @@ export class ConsultationService {
 
   updateConsultation(consultation: Consultation): Observable<Consultation> {
 
-    const foundIndex = this.consultationList.findIndex(x => x.Id === consultation.Id);
+    const foundIndex = this.consultationList.findIndex(x => x.Id === consultation.ConsultationId);
     this.consultationList[foundIndex] = consultation;
     return of(consultation);
   }

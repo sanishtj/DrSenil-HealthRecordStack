@@ -8,6 +8,10 @@ import { HrsFormGroupComponent } from './hrs-form-group/hrs-form-group.component
 import { HrsDatepickerComponent } from './hrs-datepicker/hrs-datepicker.component';
 import { HrsValidationMessageComponent } from './hrs-validation-message/hrs-validation-message.component';
 import { HrsButtonComponent } from './hrs-button/hrs-button.component';
+import { ToggleButtonComponent } from './toggle-button/toggle-button.component';
+import { ContentContainerComponent } from './content-container/content-container.component';
+import { SelectComponent } from './select/select.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 
 @NgModule({
@@ -17,7 +21,11 @@ import { HrsButtonComponent } from './hrs-button/hrs-button.component';
     HrsFormGroupComponent,
     HrsDatepickerComponent,
     HrsValidationMessageComponent,
-    HrsButtonComponent
+    HrsButtonComponent,
+    ToggleButtonComponent,
+    ContentContainerComponent,
+    SelectComponent,
+    FileUploadComponent
   ],
   imports: [
     CommonModule,
@@ -32,6 +40,9 @@ import { HrsButtonComponent } from './hrs-button/hrs-button.component';
     HrsFormGroupComponent,
     HrsDatepickerComponent,
     HrsButtonComponent,
+    ToggleButtonComponent,
+    ContentContainerComponent,
+    FileUploadComponent,
     FormsModule,
     ReactiveFormsModule
   ]

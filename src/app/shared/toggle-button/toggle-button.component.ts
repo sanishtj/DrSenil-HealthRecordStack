@@ -9,24 +9,22 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'hrs-textbox',
-  templateUrl: './hrs-textbox.component.html',
-  styleUrls: ['./hrs-textbox.component.scss'],
+  selector: 'hrs-toggle-button',
+  templateUrl: './toggle-button.component.html',
+  styleUrls: ['./toggle-button.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => HrsTextboxComponent),
+      useExisting: forwardRef(() => ToggleButtonComponent),
       multi: true
     }
   ]
 })
-export class HrsTextboxComponent implements ControlValueAccessor {
+export class ToggleButtonComponent implements ControlValueAccessor {
+  // @Output() changed = new EventEmitter<boolean>();
   @ViewChild('inputElm', { static: true }) inputElmnt;
-
-  @Input() placeholder: string;
-  @Input() type: string;
-  @Input() isInValid: boolean;
-  @Input() isDisabled: boolean;
+  @Input() disabled: boolean;
+  @Input() label: string;
 
   @HostBinding('attr.id')
   externalId = '';
@@ -68,7 +66,7 @@ export class HrsTextboxComponent implements ControlValueAccessor {
     if (value) {
       this.value = value;
       const input = this.inputElmnt.nativeElement;
-      this.renderer.setProperty(input, 'value', value);
+      this.renderer.setProperty(input, 'checked', value);
     }
   }
 
@@ -76,8 +74,8 @@ export class HrsTextboxComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  textinput(val) {
-    console.log(val);
+  checkChanged(val) {    
     this.value = val;
   }
+
 }
