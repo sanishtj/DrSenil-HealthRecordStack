@@ -1,1 +1,197 @@
-<p>investigations works!</p>
+<form [formGroup]="investigationsForm">
+    <div class="row">
+        <div class="col-12">
+            <hrs-widget>
+                <div widget-header>
+                    <h2>Blood</h2>
+                </div>
+                <div widget-content formGroupName="blood">
+                    <hrs-content-container>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="hemoglobin" controllabel="Hemoglobin">
+                                    <textarea class="form-control form-control-lg" id="hemoglobin" rows="3"
+                                        formControlName="hemoglobin"></textarea>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="esr" controllabel="ESR">
+                                    <textarea class="form-control form-control-lg" id="esr" rows="3"
+                                        formControlName="esr"></textarea>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="fbs" controllabel="FBS">
+                                    <textarea class="form-control form-control-lg" id="fbs" rows="3"
+                                        formControlName="fbs"></textarea>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="ppbs" controllabel="PPBS">
+                                    <textarea class="form-control form-control-lg" id="ppbs" rows="3"
+                                        formControlName="ppbs"></textarea>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="rbs" controllabel="RBS">
+                                    <textarea class="form-control form-control-lg" id="rbs" rows="3"
+                                        formControlName="rbs"></textarea>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="urea" controllabel="Urea">
+                                    <textarea class="form-control form-control-lg" id="urea" rows="3"
+                                        formControlName="urea"></textarea>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="creatine" controllabel="Creatine">
+                                    <textarea class="form-control form-control-lg" id="creatine" rows="3"
+                                        formControlName="creatine"></textarea>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="sodium" controllabel="Sodium">
+                                    <textarea class="form-control form-control-lg" id="sodium" rows="3"
+                                        formControlName="sodium"></textarea>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="potassium" controllabel="Potassium">
+                                    <textarea class="form-control form-control-lg" id="potassium" rows="3"
+                                        formControlName="potassium"></textarea>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="pt" controllabel="PT">
+                                    <textarea class="form-control form-control-lg" id="pt" rows="3"
+                                        formControlName="pt"></textarea>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="inr" controllabel="INR">
+                                    <textarea class="form-control form-control-lg" id="inr" rows="3"
+                                        formControlName="inr"></textarea>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="prolactine" controllabel="Prolactine">
+                                    <textarea class="form-control form-control-lg" id="prolactine" rows="3"
+                                        formControlName="prolactine"></textarea>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="cortisol" controllabel="Cortisol">
+                                    <textarea class="form-control form-control-lg" id="cortisol" rows="3"
+                                        formControlName="cortisol"></textarea>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="hasthyroid" controllabel="&nbsp;">
+                                   <div class="row" formGroupName="thyroid">
+                                    <div class="col-4">
+                                        <hrs-form-group controlname="hasthyroid" controllabel="">
+                                            <hrs-toggle-button formControlName="hasthyroid" id="hasthyroid"
+                                                label="Thyroid?">
+                                            </hrs-toggle-button>
+                                        </hrs-form-group>
+                                    </div>
+                                    <div class="col-8">
+                                       
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">T3</span>
+                                            </div>
+                                            <input type="text" id="basic-addon1" formControlName="t3" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">T4</span>
+                                            </div>
+                                            <input type="text" id="basic-addon1" formControlName="t4" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">TSH</span>
+                                            </div>
+                                            <input type="text" id="basic-addon1" formControlName="tsh" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                </div>
+                                </hrs-form-group>
+                                
+                            </div>
+                        </div>
+                    </hrs-content-container>
+                </div>
+            </hrs-widget>
+
+            <hrs-widget>
+                <div widget-header>
+                    <h2>X-Ray</h2>
+                </div>
+                <div widget-content formGroupName="xray">
+                    <hrs-content-container>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="xrayimage" controllabel="R-Ray Image">
+                                    <hrs-file-upload formControlName="xrayimage"></hrs-file-upload>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="note" controllabel="Note">
+                                    <textarea class="form-control form-control-lg" id="note" rows="3"
+                                        formControlName="note"></textarea>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                    </hrs-content-container>
+                </div>
+            </hrs-widget>
+
+            <hrs-widget>
+                <div widget-header>
+                    <h2>Scans</h2>
+                </div>
+                <div widget-content formGroupName="scans">
+                    <hrs-content-container>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="mri" controllabel="CT Scan">
+                                    <hrs-file-upload formControlName="ctscan"></hrs-file-upload>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="mri" controllabel="MRI">
+                                    <hrs-file-upload formControlName="mri"></hrs-file-upload>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                    </hrs-content-container>
+                </div>
+            </hrs-widget>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <button id="addngo" type="button" (click)="addComorbidities()"
+                class="btn btn-lg btn-success waves-effect waves-themed float-right">
+                Save & Continue
+            </button>
+        </div>
+    </div>
+</form>

@@ -11,15 +11,8 @@ export class ExaminationsComponent implements OnInit {
 
   examinationsForm: FormGroup;
 
-  private file: File | null = null;
 
-  @HostListener('change', ['$event.target.files'])
-  emitFiles(event: FileList) {
-    const file = event && event.item(0);
-    this.file = file;
-  }
-
-  constructor(private formBuilder: FormBuilder, private host: ElementRef<HTMLInputElement>) {
+  constructor(private formBuilder: FormBuilder) {
     this.examinationsForm = this.formBuilder.group(
       {
         generalexaminations: this.formBuilder.group({
@@ -139,6 +132,58 @@ export class ExaminationsComponent implements OnInit {
     {
       Key: 'Hyper',
       Value: 'Hyper'
+    }]
+  }
+
+  getReflexValues(): Array<ComboboxItem> {
+    return [{
+      Key: '0',
+      Value: '0'
+    }, {
+      Key: '+',
+      Value: '+'
+    },
+    {
+      Key: '++',
+      Value: '++'
+    },
+    {
+      Key: '+++',
+      Value: '+++'
+    }]
+  }
+
+  getPowerMeasure(): Array<ComboboxItem> {
+    return [{
+      Key: '0',
+      Value: '0'
+    }, {
+      Key: '1',
+      Value: '1'
+    },
+    {
+      Key: '2',
+      Value: '2'
+    },
+    {
+      Key: '3',
+      Value: '3'
+    },
+    {
+      Key: '4-',
+      Value: '4-'
+    },
+    {
+      Key: '4',
+      Value: '4'
+    },
+    {
+      Key: '4+',
+      Value: '4+'
+    },
+    {
+      Key: '5',
+      Value: '5'
     }]
   }
 

@@ -1,1 +1,75 @@
-<p>diagnosis works!</p>
+<form [formGroup]="diagnosisForm">
+    <div class="row">
+        <div class="col-12">
+            <hrs-widget>
+                <div widget-header>
+                    <h2>Diagnosis</h2>
+                </div>
+                <div widget-content formGroupName="diagnosis">
+                    <hrs-content-container>
+                        <div class="row">
+                            <div class="col-12">
+                                <hrs-form-group controlname="note" controllabel="Note">
+                                    <textarea class="form-control form-control-lg" id="note" rows="3"
+                                        formControlName="note"></textarea>
+                                </hrs-form-group>                            
+                            </div>
+                        </div>                        
+                    </hrs-content-container>
+                </div>
+            </hrs-widget>
+
+            <hrs-widget>
+                <div widget-header>
+                    <h2>Treatment</h2>
+                </div>
+                <div widget-content formGroupName="treatment">
+                    <hrs-content-container>
+                        <div class="row" formArrayName="medicines"
+                        *ngFor="let item of diagnosisForm.controls.treatment.controls.medicines.controls; let i = index;">
+                        <div class="col-12">
+                            <div class="row" [formGroupName]="i">
+                                <div class="col-6">
+                                    <hrs-form-group controlname="medicine" controllabel="Medicine {{i+1}}">
+                                        <hrs-textbox type="text" id="medicine" placeholder=""
+                                            formControlName="medicine">
+                                        </hrs-textbox>
+                                    </hrs-form-group>
+                                </div>
+                                <div class="col-6">                                
+                                    <hrs-form-group controlname="note" controllabel="Note">
+                                        <textarea class="form-control form-control-lg" id="note" rows="3"
+                                            formControlName="note"></textarea>
+                                    </hrs-form-group>                            
+                                </div>
+                            </div>
+                        </div>
+                           
+                        </div> 
+                        
+                        <div class="row">
+                            <div class="col-12">
+                                <button id="addmedicine" type="button" (click)="addMedicine()"
+                                class="btn btn-lg btn-success waves-effect waves-themed float-right">
+                                Add Medicine
+                            </button>
+                            </div>                          
+                        </div>
+                    </hrs-content-container>
+                </div>
+            </hrs-widget>
+
+        
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <button id="addngo" type="button" (click)="addComorbidities()"
+                class="btn btn-lg btn-success waves-effect waves-themed float-right">
+                Save & Continue
+            </button>
+        </div>
+    </div>
+</form>

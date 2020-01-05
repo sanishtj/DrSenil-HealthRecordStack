@@ -312,11 +312,9 @@
                             </div>
                             <div class="col-6">
                                 <hrs-form-group controlname="behaviordescription" controllabel="Tone">
-                                    <select class="form-control form-control-lg" formControlName="tone"
-                                        id="tone">
+                                    <select class="form-control form-control-lg" formControlName="tone" id="tone">
                                         <option [value]="null" disabled>Choose an item</option>
-                                        <option *ngFor="let tone of getToneTypes()"
-                                            [value]="tone.Key">
+                                        <option *ngFor="let tone of getToneTypes()" [value]="tone.Key">
                                             {{tone.Value}}
                                         </option>
                                     </select>
@@ -329,41 +327,412 @@
                                     <table class="table table-sm m-0">
                                         <thead class="bg-primary-500">
                                             <tr>
-                                                <th>#</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Username</th>
+                                                <th></th>
+                                                <th>Left</th>
+                                                <th>Right</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
+                                                <th scope="row" class="align-middle">Shoulder</th>
+                                                <td>
+                                                    <select class="form-control form-control-lg"
+                                                        formControlName="leftshoulder" id="leftshoulder">
+                                                        <option [value]="null" disabled>Choose an item</option>
+                                                        <option *ngFor="let power of getPowerMeasure()"
+                                                            [value]="power.Key">
+                                                            {{power.Value}}
+                                                        </option>
+                                                    </select>
+                                                </td>
+                                                <td><select class="form-control form-control-lg"
+                                                        formControlName="rightshoulder" id="rightshoulder">
+                                                        <option [value]="null" disabled>Choose an item</option>
+                                                        <option *ngFor="let power of getPowerMeasure()"
+                                                            [value]="power.Key">
+                                                            {{power.Value}}
+                                                        </option>
+                                                    </select></td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
+                                                <th scope="row" class="align-middle">Elbow</th>
+                                                <td><select class="form-control form-control-lg"
+                                                        formControlName="leftelbow" id="leftelbow">
+                                                        <option [value]="null" disabled>Choose an item</option>
+                                                        <option *ngFor="let power of getPowerMeasure()"
+                                                            [value]="power.Key">
+                                                            {{power.Value}}
+                                                        </option>
+                                                    </select></td>
+                                                <td><select class="form-control form-control-lg"
+                                                        formControlName="rightelbow" id="rightelbow">
+                                                        <option [value]="null" disabled>Choose an item</option>
+                                                        <option *ngFor="let power of getPowerMeasure()"
+                                                            [value]="power.Key">
+                                                            {{power.Value}}
+                                                        </option>
+                                                    </select></td>
+
                                             </tr>
                                             <tr>
-                                                <th scope="row">3</th>
-                                                <td colspan="2">Larry the Bird</td>
-                                                <td>@twitter</td>
+                                                <th scope="row" class="align-middle">Hand grip</th>
+                                                <td><select class="form-control form-control-lg"
+                                                        formControlName="lefthandgrip" id="lefthandgrip">
+                                                        <option [value]="null" disabled>Choose an item</option>
+                                                        <option *ngFor="let power of getPowerMeasure()"
+                                                            [value]="power.Key">
+                                                            {{power.Value}}
+                                                        </option>
+                                                    </select></td>
+                                                <td><select class="form-control form-control-lg"
+                                                        formControlName="righthandgrip" id="righthandgrip">
+                                                        <option [value]="null" disabled>Choose an item</option>
+                                                        <option *ngFor="let power of getPowerMeasure()"
+                                                            [value]="power.Key">
+                                                            {{power.Value}}
+                                                        </option>
+                                                    </select></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="align-middle">Lower Limb</th>
+                                                <td><select class="form-control form-control-lg"
+                                                        formControlName="leftlowerlimb" id="leftlowerlimb">
+                                                        <option [value]="null" disabled>Choose an item</option>
+                                                        <option *ngFor="let power of getPowerMeasure()"
+                                                            [value]="power.Key">
+                                                            {{power.Value}}
+                                                        </option>
+                                                    </select></td>
+                                                <td><select class="form-control form-control-lg"
+                                                        formControlName="rightlowerlimb" id="rightlowerlimb">
+                                                        <option [value]="null" disabled>Choose an item</option>
+                                                        <option *ngFor="let power of getPowerMeasure()"
+                                                            [value]="power.Key">
+                                                            {{power.Value}}
+                                                        </option>
+                                                    </select></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="align-middle">Hip</th>
+                                                <td><select class="form-control form-control-lg"
+                                                        formControlName="lefthip" id="lefthip">
+                                                        <option [value]="null" disabled>Choose an item</option>
+                                                        <option *ngFor="let power of getPowerMeasure()"
+                                                            [value]="power.Key">
+                                                            {{power.Value}}
+                                                        </option>
+                                                    </select></td>
+                                                <td><select class="form-control form-control-lg"
+                                                        formControlName="righthip" id="righthip">
+                                                        <option [value]="null" disabled>Choose an item</option>
+                                                        <option *ngFor="let power of getPowerMeasure()"
+                                                            [value]="power.Key">
+                                                            {{power.Value}}
+                                                        </option>
+                                                    </select></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="align-middle">Knee</th>
+                                                <td><select class="form-control form-control-lg"
+                                                        formControlName="leftknee" id="leftknee">
+                                                        <option [value]="null" disabled>Choose an item</option>
+                                                        <option *ngFor="let power of getPowerMeasure()"
+                                                            [value]="power.Key">
+                                                            {{power.Value}}
+                                                        </option>
+                                                    </select></td>
+                                                <td><select class="form-control form-control-lg"
+                                                        formControlName="rightknee" id="rightknee">
+                                                        <option [value]="null" disabled>Choose an item</option>
+                                                        <option *ngFor="let power of getPowerMeasure()"
+                                                            [value]="power.Key">
+                                                            {{power.Value}}
+                                                        </option>
+                                                    </select></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="align-middle">Foot</th>
+                                                <td><select class="form-control form-control-lg"
+                                                        formControlName="leftfoot" id="leftfoot">
+                                                        <option [value]="null" disabled>Choose an item</option>
+                                                        <option *ngFor="let power of getPowerMeasure()"
+                                                            [value]="power.Key">
+                                                            {{power.Value}}
+                                                        </option>
+                                                    </select></td>
+                                                <td><select class="form-control form-control-lg"
+                                                        formControlName="rightfoot" id="rightfoot">
+                                                        <option [value]="null" disabled>Choose an item</option>
+                                                        <option *ngFor="let power of getPowerMeasure()"
+                                                            [value]="power.Key">
+                                                            {{power.Value}}
+                                                        </option>
+                                                    </select></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="align-middle">EHL</th>
+                                                <td><select class="form-control form-control-lg"
+                                                        formControlName="leftehi" id="leftehi">
+                                                        <option [value]="null" disabled>Choose an item</option>
+                                                        <option *ngFor="let power of getPowerMeasure()"
+                                                            [value]="power.Key">
+                                                            {{power.Value}}
+                                                        </option>
+                                                    </select></td>
+                                                <td><select class="form-control form-control-lg"
+                                                        formControlName="rightehi" id="rightehi">
+                                                        <option [value]="null" disabled>Choose an item</option>
+                                                        <option *ngFor="let power of getPowerMeasure()"
+                                                            [value]="power.Key">
+                                                            {{power.Value}}
+                                                        </option>
+                                                    </select></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </hrs-form-group>
-                            </div>                         
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="reflex" controllabel="Reflex - DTR">
+                                    <select class="form-control form-control-lg" formControlName="reflex" id="reflex">
+                                        <option [value]="null" disabled>Choose an item</option>
+                                        <option *ngFor="let reflex of getReflexValues()" [value]="reflex.Key">
+                                            {{reflex.Value}}
+                                        </option>
+                                    </select>
+                                </hrs-form-group>
+                            </div>
                         </div>
                     </hrs-content-container>
                 </div>
             </hrs-widget>
 
+            <hrs-widget>
+                <div widget-header>
+                    <h2>Sensory System</h2>
+                </div>
+                <div widget-content formGroupName="sensorysystemexaminations">
+                    <hrs-content-container>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="upperlimb" controllabel="Upper Limb">
+                                    <select class="form-control form-control-lg" formControlName="upperlimb"
+                                        id="upperlimb">
+                                        <option [value]="null" disabled>Choose an item</option>
+                                        <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                            {{status.Value}}
+                                        </option>
+                                    </select>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="upperlimb" controllabel="Note">
+                                    <hrs-textbox type="text" id="upperlimbnote" placeholder=""
+                                        formControlName="upperlimbnote">
+                                    </hrs-textbox>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="chest" controllabel="Chest">
+                                    <select class="form-control form-control-lg" formControlName="chest" id="chest">
+                                        <option [value]="null" disabled>Choose an item</option>
+                                        <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                            {{status.Value}}
+                                        </option>
+                                    </select>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="chestnote" controllabel="Note">
+                                    <hrs-textbox type="text" id="chestnote" placeholder="" formControlName="chestnote">
+                                    </hrs-textbox>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="abdomen" controllabel="Abdomen">
+                                    <select class="form-control form-control-lg" formControlName="abdomen" id="abdomen">
+                                        <option [value]="null" disabled>Choose an item</option>
+                                        <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                            {{status.Value}}
+                                        </option>
+                                    </select>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="abdomennote" controllabel="Note">
+                                    <hrs-textbox type="text" id="abdomennote" placeholder=""
+                                        formControlName="abdomennote">
+                                    </hrs-textbox>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="lowerlimb" controllabel="Lower Limb">
+                                    <select class="form-control form-control-lg" formControlName="lowerlimb"
+                                        id="lowerlimb">
+                                        <option [value]="null" disabled>Choose an item</option>
+                                        <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                            {{status.Value}}
+                                        </option>
+                                    </select>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="lowerlimbnote" controllabel="Note">
+                                    <hrs-textbox type="text" id="lowerlimbnote" placeholder=""
+                                        formControlName="lowerlimbnote">
+                                    </hrs-textbox>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+
+                    </hrs-content-container>
+                </div>
+            </hrs-widget>
+
+            <hrs-widget>
+                <div widget-header>
+                    <h2>Cerebellar System</h2>
+                </div>
+                <div widget-content formGroupName="cerebellarsystemexaminations">
+                    <hrs-content-container>
+                        <div class="row">
+                            <div class="col-6">
+                                <hrs-form-group controlname="status" controllabel="Status">
+                                    <select class="form-control form-control-lg" formControlName="status" id="status">
+                                        <option [value]="null" disabled>Choose an item</option>
+                                        <option *ngFor="let status of getHealthStatus()" [value]="status.Key">
+                                            {{status.Value}}
+                                        </option>
+                                    </select>
+                                </hrs-form-group>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <hrs-toggle-button formControlName="vertigostatus" label="Vertigo" id="vertigostatus">
+                                </hrs-toggle-button>
+                            </div>
+                            <div class="col-4">
+                                <hrs-form-group controlname="Left" controllabel="Left">
+                                    <hrs-textbox type="text" id="vertigoleftnote" placeholder=""
+                                        formControlName="vertigoleftnote">
+                                    </hrs-textbox>
+                                </hrs-form-group>
+                            </div>
+                            <div class="col-4">
+                                <hrs-form-group controlname="Right" controllabel="Right">
+                                    <hrs-textbox type="text" id="vertigorightnote" placeholder=""
+                                        formControlName="vertigorightnote">
+                                    </hrs-textbox>
+                                </hrs-form-group>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <hrs-toggle-button formControlName="pastpointingstatus" label="Past Pointing"
+                                    id="pastpointingstatus">
+                                </hrs-toggle-button>
+                            </div>
+                            <div class="col-4">
+                                <hrs-form-group controlname="Left" controllabel="Left">
+                                    <hrs-textbox type="text" id="pastpointingleftnote" placeholder=""
+                                        formControlName="pastpointingleftnote">
+                                    </hrs-textbox>
+                                </hrs-form-group>
+
+                            </div>
+                            <div class="col-4">
+                                <hrs-form-group controlname="Right" controllabel="Right">
+                                    <hrs-textbox type="text" id="pastpointingrightnote" placeholder=""
+                                        formControlName="pastpointingrightnote">
+                                    </hrs-textbox>
+                                </hrs-form-group>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <hrs-toggle-button formControlName="dysdiadochokinesiastatus" label="Dysdiadochokinesia"
+                                    id="dysdiadochokinesiastatus">
+                                </hrs-toggle-button>
+                            </div>
+                            <div class="col-4">
+                                <hrs-form-group controlname="Left" controllabel="Left">
+                                    <hrs-textbox type="text" id="dysdiadochokinesialeftnote" placeholder=""
+                                        formControlName="dysdiadochokinesialeftnote">
+                                    </hrs-textbox>
+                                </hrs-form-group>
+
+                            </div>
+                            <div class="col-4">
+                                <hrs-form-group controlname="Right" controllabel="Right">
+                                    <hrs-textbox type="text" id="dysdiadochokinesiarightnote" placeholder=""
+                                        formControlName="dysdiadochokinesiarightnote">
+                                    </hrs-textbox>
+                                </hrs-form-group>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <hrs-toggle-button formControlName="nystagmusstatus" label="Nystagmus"
+                                    id="nystagmusstatus">
+                                </hrs-toggle-button>
+                            </div>
+                            <div class="col-4">
+                                <hrs-form-group controlname="Left" controllabel="Left">
+                                    <hrs-textbox type="text" id="nystagmusleftnote" placeholder=""
+                                        formControlName="nystagmusleftnote">
+                                    </hrs-textbox>
+                                </hrs-form-group>
+
+                            </div>
+                            <div class="col-4">
+                                <hrs-form-group controlname="Right" controllabel="Right">
+                                    <hrs-textbox type="text" id="nystagmusrightnote" placeholder=""
+                                        formControlName="nystagmusrightnote">
+                                    </hrs-textbox>
+                                </hrs-form-group>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            
+                            <div class="col-6">
+                                <hrs-form-group controlname="Skull" controllabel="Skull">
+                                    <hrs-textbox type="text" id="skull" placeholder="" formControlName="skull">
+                                    </hrs-textbox>
+                                </hrs-form-group>
+
+                            </div>
+                            <div class="col-6">
+                                <hrs-form-group controlname="Spine" controllabel="Spine">
+                                    <hrs-textbox type="text" id="spine" placeholder="" formControlName="spine">
+                                    </hrs-textbox>
+                                </hrs-form-group>
+
+                            </div>
+                        </div>
+                    </hrs-content-container>
+                </div>
+            </hrs-widget>
         </div>
     </div>
+
 
     <div class="row">
         <div class="col-12">
