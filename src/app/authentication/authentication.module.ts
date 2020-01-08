@@ -10,6 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducer } from './state/auth.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './state/auth.effects';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -20,6 +21,7 @@ import { AuthEffects } from './state/auth.effects';
     AuthenticationRoutingModule,
     RouterModule,
     SharedModule,
+    FontAwesomeModule,
     StoreModule.forFeature('auth', reducer),
     EffectsModule.forFeature(
       [ AuthEffects ]

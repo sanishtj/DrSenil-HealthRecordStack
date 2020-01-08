@@ -9,6 +9,7 @@ import { User } from 'src/app/models/user';
 import { AppState } from 'src/app/state/app.state';
 import { Store } from '@ngrx/store';
 import { LogIn } from '../state/auth.actions';
+import { faFacebookSquare, faTwitterSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'hrs-login',
@@ -16,6 +17,11 @@ import { LogIn } from '../state/auth.actions';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  
+  faFacebookSquare = faFacebookSquare;
+  faTwitterSquare = faTwitterSquare;
+  faLinkedin = faLinkedin;
+
   userForm: FormGroup;
   emailValidationMessage = '';
   passwordValidationMessage = '';
@@ -33,6 +39,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
+    console.log(this.userForm);
     const payload = {
       email: this.userForm.controls.username.value,
       password: this.userForm.controls.password.value
