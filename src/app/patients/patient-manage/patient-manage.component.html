@@ -1,143 +1,105 @@
 <hrs-widget>
-  <div widget-header>
-    <h2>Add New Patient</h2>
-  </div>
-  <div widget-content>
-    <form [formGroup]="patientInfoForm">
-      <div class="row">
-        <div class="col-6">
-          <hrs-form-group controlname="FullName" controllabel="Full Name">
-            <hrs-textbox
-              type="text"
-              id="fullname"
-              placeholder="Patient's Full Name"
-              formControlName="fullname"
-              [isInValid]="
-                (fullname.dirty || fullname.touched) && fullname.invalid
-              "
-            ></hrs-textbox>
-            <hrs-validation-message
-              message="Please fill patient's full name"
-              *ngIf="
-                (fullname.dirty || fullname.touched) &&
-                fullname.invalid &&
-                !!fullname.errors.required
-              "
-            ></hrs-validation-message>
-            <hrs-validation-message
-              message="Please fill a valid full name"
-              *ngIf="
-                (fullname.dirty || fullname.touched) &&
-                fullname.invalid &&
-                !!fullname.errors.pattern
-              "
-            ></hrs-validation-message>
-          </hrs-form-group>
-        </div>
-        <div class="col-6">
-          <hrs-form-group controlname="DOB" controllabel="Date of Birth">
-            <hrs-datepicker id="dob" formControlName="dob"></hrs-datepicker>
-            <hrs-validation-message
-              message="Please fill date of birth"
-              *ngIf="
-                (dob.dirty || dob.touched) &&
-                dob.invalid &&
-                !!dob?.errors.required
-              "
-            ></hrs-validation-message>
-          </hrs-form-group>
-        </div>
-      </div>
+    <div widget-header="widget-header">
+        <h2>Add New Patient</h2>
+    </div>
+    <div widget-content="widget-content">
+        <form [formGroup]="patientInfoForm">
+            <div class="row">
+                <div class="col-12">
+                    <hrs-form-group controllabel="Full Name" controlname="FullName">
+                        <hrs-textbox [isInValid]="
+                                            (fullname.dirty || fullname.touched) && fullname.invalid
+                                          " formControlName="fullname" id="fullname" placeholder="Patient's Full Name" type="text"></hrs-textbox>
+                        <hrs-validation-message *ngIf="
+                                            (fullname.dirty || fullname.touched) &&
+                                            fullname.invalid &&
+                                            !!fullname.errors.required
+                                          " message="Please fill patient's full name"></hrs-validation-message>
+                        <hrs-validation-message *ngIf="
+                                            (fullname.dirty || fullname.touched) &&
+                                            fullname.invalid &&
+                                            !!fullname.errors.pattern
+                                          " message="Please fill a valid full name"></hrs-validation-message>
+                    </hrs-form-group>
+                </div>
+            </div>
 
-      <div class="row">
-        <div class="col-6">
-          <hrs-form-group controlname="Mobile" controllabel="Mobile Number">
-            <hrs-textbox
-              type="text"
-              id="mobile"
-              placeholder="Patient's mobile number"
-              formControlName="mobile"
-              [isInValid]="(mobile.dirty || mobile.touched) && mobile.invalid"
-            ></hrs-textbox>
-            <hrs-validation-message
-              message="Please fill patient's mobile number"
-              *ngIf="
-                (mobile.dirty || mobile.touched) &&
-                mobile.invalid &&
-                !!mobile.errors.required
-              "
-            >
-            </hrs-validation-message>
-            <hrs-validation-message
-              message="Please fill a valid mobile number"
-              *ngIf="
-                (mobile.dirty || mobile.touched) &&
-                mobile.invalid &&
-                !!mobile.errors.invalidmobileNumber
-              "
-            ></hrs-validation-message>
-          </hrs-form-group>
-        </div>
-        <div class="col-6">
-          <hrs-form-group controlname="Email" controllabel="Email">
-            <hrs-textbox
-              type="text"
-              id="email"
-              placeholder="Patient's email"
-              formControlName="email"
-              [isInValid]="(email.dirty || email.touched) && email.invalid"
-            ></hrs-textbox>
-            <hrs-validation-message
-              message="Please fill patient's email"
-              *ngIf="
-                (email.dirty || email.touched) &&
-                email.invalid &&
-                !!email.errors.required
-              "
-            >
-            </hrs-validation-message>
-            <hrs-validation-message
-              message="Please fill a valid email address"
-              *ngIf="
-                (email.dirty || email.touched) &&
-                email.invalid &&
-                !!email.errors.invalidEmailAddress
-              "
-            ></hrs-validation-message>
-          </hrs-form-group>
-        </div>
-      </div>
+            <div class="row">
+                <div class="col-6">
+                    <hrs-form-group controllabel="Age" controlname="Age">
+                        <hrs-textbox [isInValid]="(age.dirty || age.touched) && age.invalid" formControlName="age" id="age" placeholder="Patient's age in years" type="number"></hrs-textbox>
+                        <hrs-validation-message *ngIf="
+                                            (age.dirty || age.touched) &&
+                                            age.invalid &&
+                                            !!age?.errors.required
+                                          " message="Please fill Age"></hrs-validation-message>
+                    </hrs-form-group>
+                </div>
+                <div class="col-6">
+                  <hrs-form-group controllabel="Gender" controlname="Gender">
+                    <!-- <hrs-textbox [isInValid]="(gender.dirty || gender.touched) && gender.invalid" formControlName="gender" id="gender" placeholder="Patient's age in years" type="number"></hrs-textbox> -->
+                    <select class="form-control form-control-lg" formControlName="gender"
+                                        id="gender">
+                                        <option [value]="null" disabled>Please select a gender</option>
+                                        <option *ngFor="let gender of getGenders()"
+                                            [value]="gender.Key">
+                                            {{gender.Value}}
+                                        </option>
+                                    </select>
+                    <hrs-validation-message *ngIf="
+                                        (gender.dirty || gender.touched) &&
+                                        gender.invalid &&
+                                        !!gender?.errors.required
+                                      " message="Please select a gender"></hrs-validation-message>
+                </hrs-form-group>
+                </div>
+            </div>
 
-      <div class="row">
-        <div class="col-12" *ngIf="!isEdit">
-          <button
-            id="add"
-            type="button"
-            (click)="addPatientAndContinue()"
-            class="btn btn-lg btn-success waves-effect waves-themed float-right"
-          >
-            Add Patient & Continue
-          </button>
-          <button
-            id="addngo"
-            type="button"
-            (click)="addPatient()"
-            class="btn btn-lg btn-success waves-effect waves-themed float-right mr-2"
-          >
-            Add Patient
-          </button>
-        </div>
-        <div class="col-12" *ngIf="isEdit">
-          <button
-            id="addngo"
-            type="button"
-            (click)="updatePatient()"
-            class="btn btn-lg btn-success waves-effect waves-themed float-right mr-2"
-          >
-            Update Patient
-          </button>
-        </div>
-      </div>
-    </form>
-  </div>
+            <div class="row">
+                <div class="col-6">
+                    <hrs-form-group controllabel="Mobile Number" controlname="Mobile">
+                        <hrs-textbox [isInValid]="(mobile.dirty || mobile.touched) && mobile.invalid" formControlName="mobile" id="mobile" placeholder="Patient's mobile number" type="text"></hrs-textbox>
+                        <hrs-validation-message *ngIf="
+                                            (mobile.dirty || mobile.touched) &&
+                                            mobile.invalid &&
+                                            !!mobile.errors.required
+                                          " message="Please fill patient's mobile number"></hrs-validation-message>
+                        <hrs-validation-message *ngIf="
+                                            (mobile.dirty || mobile.touched) &&
+                                            mobile.invalid &&
+                                            !!mobile.errors.invalidmobileNumber
+                                          " message="Please fill a valid mobile number"></hrs-validation-message>
+                    </hrs-form-group>
+                </div>
+                <div class="col-6">
+                    <hrs-form-group controllabel="Email" controlname="Email">
+                        <hrs-textbox [isInValid]="(email.dirty || email.touched) && email.invalid" formControlName="email" id="email" placeholder="Patient's email" type="text"></hrs-textbox>
+                        <hrs-validation-message *ngIf="
+                                            (email.dirty || email.touched) &&
+                                            email.invalid &&
+                                            !!email.errors.required
+                                          " message="Please fill patient's email"></hrs-validation-message>
+                        <hrs-validation-message *ngIf="
+                                            (email.dirty || email.touched) &&
+                                            email.invalid &&
+                                            !!email.errors.invalidEmailAddress
+                                          " message="Please fill a valid email address"></hrs-validation-message>
+                    </hrs-form-group>
+                </div>
+            </div>
+
+            <div class="row">
+                <div *ngIf="!isEdit" class="col-12">
+                    <button (click)="addPatientAndContinue()" class="btn btn-lg btn-success waves-effect waves-themed float-right" id="add" type="button">
+                        Add Patient & Continue
+                    </button>
+                </div>
+                <div *ngIf="isEdit" class="col-12">
+                    <button (click)="updatePatient()" class="btn btn-lg btn-success waves-effect waves-themed float-right mr-2" id="addngo" type="button">
+                        Update Patient
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
 </hrs-widget>

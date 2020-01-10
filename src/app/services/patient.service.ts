@@ -10,21 +10,52 @@ import { Patientinfo } from '../models/patientinfo';
 })
 export class PatinetService {
   private productsUrl = 'api/products';
-  pid = 2;
+  pid = 5;
   patientList = [
     {
       Id: '1',
+      PatientId: 'DRGS1',
       FullName: 'Sanish Joseph',
-      DOB: new Date(),
+      Age: 34,
+      Gender:'Male',
       Mobile: '123456789',
       Email: 'sanyjose85@gmail.com'
     },
     {
       Id: '2',
-      FullName: 'Sanish Joseph',
-      DOB: new Date(),
+      PatientId: 'DRGS2',
+      FullName: 'Annie KO',
+      Age: 62,
+      Gender:'Female',
       Mobile: '123456789',
-      Email: 'sanyjose85@gmail.com'
+      Email: 'annieko@gmail.com'
+    },
+    {
+      Id: '3',
+      PatientId: 'DRGS3',
+      FullName: 'Shabini Rajadas',
+      Age: 28,
+      Gender:'Female',
+      Mobile: '123456789',
+      Email: 'shabs@gmail.com'
+    },
+    {
+      Id: '4',
+      PatientId: 'DRGS4',
+      FullName: 'Steve Antony',
+      Age: 2,
+      Gender:'Female',
+      Mobile: '123456789',
+      Email: 'steveantony@gmail.com'
+    },
+    {
+      Id: '5',
+      PatientId: 'DRGS5',
+      FullName: 'Ginish Joseph',
+      Age: 35,
+      Gender:'Female',
+      Mobile: '123456789',
+      Email: 'ginish@gmail.com'
     }
   ];
 
@@ -42,7 +73,8 @@ export class PatinetService {
   addPatient(patient: Patientinfo): Observable<Patientinfo> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     // Product Id must be null for the Web API to assign an Id
-    const newPatient = { ...patient, Id: (this.pid + 1).toString() };
+    let PatientId = 'DRGS'+(this.pid + 1).toString();
+    const newPatient = { ...patient, Id: (this.pid + 1).toString(), PatientId };
     this.patientList.push(newPatient);
     this.pid = this.pid + 1;
     return of(newPatient);

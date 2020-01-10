@@ -29,7 +29,7 @@ export const getCurrentConsultation = createSelector(
           return {
               Id: null,
               FullName: '',
-              DOB: new Date(),
+              Age: 0,
               Mobile: '',
               Email: ''
           };

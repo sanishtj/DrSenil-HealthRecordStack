@@ -1,0 +1,9 @@
+{
+    "Gender": [{
+        "Key": "Male",
+        "Value": "Male"
+      }, {
+        "Key": "Female",
+        "Value": "Female"
+      }]
+}

@@ -22,7 +22,7 @@ export const getCurrentPatient = createSelector(
           return {
               Id: null,
               FullName: '',
-              DOB: new Date(),
+              age: 0,
               Mobile: '',
               Email: ''
           };

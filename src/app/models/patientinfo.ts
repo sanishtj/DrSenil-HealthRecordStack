@@ -1,7 +1,9 @@
 export class Patientinfo {
   Id: string;
+  PatientId: string;
   FullName: string;
-  DOB: Date;
+  Age: number;
+  Gender: string;
   Mobile: string;
   Email: string;
   BloodGroup?: string;

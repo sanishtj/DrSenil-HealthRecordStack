@@ -20,7 +20,7 @@ export class PatientdetailsComponent implements OnInit {
         null,
         []
       ],
-      dob: [null, []],
+      age: [null, []],
       mobile: [
         null,
         []
@@ -43,7 +43,7 @@ export class PatientdetailsComponent implements OnInit {
     
     this.patientInfoForm.patchValue({
       fullname: this.patientdetails.FullName,
-      dob: this.patientdetails.DOB,
+      age: this.patientdetails.Age,
       mobile: this.patientdetails.Mobile,
       email: this.patientdetails.Email
     });

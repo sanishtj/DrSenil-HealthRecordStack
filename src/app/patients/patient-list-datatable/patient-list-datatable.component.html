@@ -3,7 +3,7 @@
     <tr>
       <th>ID</th>
       <th>Name</th>
-      <th>DOB</th>
+      <th>Age</th>
       <th>Mobile</th>
       <th>Email</th>
       <th></th>
@@ -15,7 +15,7 @@
       <tr *ngFor="let patient of patients">
           <td>{{ patient.Id }}</td>
           <td>{{ patient.FullName }}</td>
-          <td>{{ patient.DOB | date: 'mediumDate' }}</td>
+          <td>{{ patient.Age}} Years</td>
           <td>{{ patient.Mobile }}</td>
           <td>{{ patient.Email }}</td>
           <td><a (click)="EditPatient(patient)">Edit</a></td>

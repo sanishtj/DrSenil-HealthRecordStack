@@ -9,6 +9,8 @@ import { AppState } from 'src/app/state/app.state';
 import { AddPatient, UpdatePatient } from '../state/patient.actions';
 import { Observable } from 'rxjs';
 import * as fromPatients from '../state';
+import { ComboboxItem } from 'src/app/models/combobox-item';
+import { DropdownService } from 'src/app/services/dropdown.service';
 
 @Component({
   selector: 'hrs-patient-manage',
@@ -25,14 +27,16 @@ export class PatientManageComponent implements OnInit {
     private formBuilder: FormBuilder,
     private store: Store<AppState>,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private dropdownService: DropdownService
   ) {
     this.patientInfoForm = this.formBuilder.group({
       fullname: [
         this.patientInfo.FullName,
         [Validators.required, Validators.pattern('[a-zA-Z ]*')]
       ],
-      dob: [this.patientInfo.DOB, [Validators.required]],
+      age: [this.patientInfo.Age, [Validators.required]],
+      gender: [this.patientInfo.Gender, [Validators.required]],
       mobile: [
         this.patientInfo.Mobile,
         [Validators.required, mobileFormatValidator()]
@@ -57,7 +61,8 @@ export class PatientManageComponent implements OnInit {
       .subscribe((patient: Patientinfo) => {
         this.patientInfoForm.patchValue({
           fullname: patient.FullName,
-          dob: patient.DOB,
+          age: patient.Age,
+          gender: patient.Gender,
           mobile: patient.Mobile,
           email: patient.Email
         });
@@ -78,7 +83,8 @@ export class PatientManageComponent implements OnInit {
 
       const payload = new Patientinfo();
       payload.FullName = this.fullname.value;
-      payload.DOB = this.dob.value;
+      payload.Age = this.age.value;
+      payload.Gender = this.gender.value;
       payload.Mobile = this.mobile.value;
       payload.Email = this.email.value;
       if (!this.isEdit) {
@@ -96,6 +102,12 @@ export class PatientManageComponent implements OnInit {
         this.store.dispatch(new UpdatePatient(payload));
       }
     }
+    else{
+      Object.keys(this.patientInfoForm.controls).forEach(field => { // {1}
+        const control = this.patientInfoForm.get(field);            // {2}
+        control.markAsTouched({ onlySelf: true });       // {3}
+      });
+    }
   }
 
   addPatient() {
@@ -107,12 +119,21 @@ export class PatientManageComponent implements OnInit {
     this.router.navigate(['patients']);
   }
 
+  
+  getGenders(): Array<ComboboxItem> {
+    return this.dropdownService.getGenders();
+  }
+
   get fullname() {
     return this.patientInfoForm.get('fullname');
   }
 
-  get dob() {
-    return this.patientInfoForm.get('dob');
+  get age() {
+    return this.patientInfoForm.get('age');
+  }
+
+  get gender() {
+    return this.patientInfoForm.get('gender');
   }
 
   get mobile() {
