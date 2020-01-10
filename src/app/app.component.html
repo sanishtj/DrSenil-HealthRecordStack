@@ -1,23 +1,30 @@
-<div *ngIf="isPreLogin" > 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-brand-gradient">
-        <a [routerLink]="['profile']" class="page-logo-link press-scale-down d-flex align-items-center navbar-brand">
-            <img alt="Dr.Geo Senil- Powered by Health Record Stack" aria-roledescription="logo" src="assets/img/Logo-HR.png"/>
-
-        </a>
-        <button class="navbar-toggler" data-target="#collapsibleNavbar" data-toggle="collapse" type="button">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-         
-            <a [routerLink]="['auth', 'login']" class="btn-link text-white ml-auto mr-2">
-                Secure Login
-            </a>
-        </div>
-    </nav>
+<div *ngIf="isPreLogin" >   
 
     <div class="page-wrapper">
         <div class="page-inner bg-brand-gradient">
-            <div class="page-content-wrapper bg-transparent m-0">                
+            <div class="page-content-wrapper bg-transparent m-0">  
+                
+                <div class="w-100 shadow-lg px-4 bg-brand-gradient">
+                    <div class="d-flex align-items-center container p-0">
+                        <nav class="w-100 navbar navbar-expand-lg navbar-dark bg-brand-gradient">
+                            <a [routerLink]="['profile']" class="page-logo-link press-scale-down d-flex align-items-center navbar-brand">
+                                <img alt="Dr.Geo Senil- Powered by Health Record Stack" aria-roledescription="logo" src="assets/img/Logo-HR.png"/>
+                    
+                            </a>
+                            <button class="navbar-toggler" data-target="#collapsibleNavbar" data-toggle="collapse" type="button">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                             
+                                <a [routerLink]="['auth', 'login']" class="btn-link text-white ml-auto mr-2">
+                                    Secure Login
+                                </a>
+                            </div>
+                        </nav>    
+                    </div>
+                </div>
+              
+
                 <div class="flex-1" style="background: url(assets/img/svg/pattern-1.svg) no-repeat center bottom fixed; background-size: cover;">
                     <div class="overflow-hidden">
                         <div [@routeAnimations]="prepareRoute(outlet)">
@@ -43,21 +50,29 @@
             <div class="w-100 shadow-lg px-4 bg-brand-gradient">
                 <div class="d-flex align-items-center container p-0">
                     <nav
-                        class="navbar navbar-expand-sm">
-                        <!-- Brand/logo -->
-                        <a [routerLink]="['/dashboard']" class="navbar-brand">
-                            <img alt="logo" src="bird.jpg" style="width:40px;">
+                        class="w-100 navbar navbar-expand-lg navbar-dark bg-brand-gradient">
+                        <a [routerLink]="['dashboard']" class="page-logo-link press-scale-down d-flex align-items-center navbar-brand">
+                            <img alt="Dr.Geo Senil- Powered by Health Record Stack" aria-roledescription="logo" src="assets/img/Logo-HR.png"/>
+                
                         </a>
-
-                        <!-- Links -->
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a [routerLink]="['/patients',0,'manage']" class="nav-link text-white">New Patient</a>
-                            </li>
-                            <li class="nav-item">
-                                <a [routerLink]="['/patients']" class="nav-link text-white">Patient Search</a>
-                            </li>
-                        </ul>
+                        <button class="navbar-toggler" data-target="#collapsibleNavbar" data-toggle="collapse" type="button">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a [routerLink]="['/patients',0,'manage']" class="nav-link text-white">New Patient</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a [routerLink]="['/patients']" class="nav-link text-white">Patient Search</a>
+                                </li>
+                            </ul>
+                            <a [routerLink]="['profile']" class="btn-link text-white ml-auto mr-2">
+                                Logout
+                            </a>
+                        </div>
+                       
+                        
                     </nav>
 
                 </div>
@@ -72,7 +87,7 @@
                     </main>
 
                     <div class="position-absolute pos-bottom pos-left pos-right p-3 text-center text-white">
-                        2019 © SmartAdmin by&nbsp;<a class="text-white opacity-40 fw-500" href="https://www.gotbootstrap.com" target="_blank" title="gotbootstrap.com">gotbootstrap.com</a>
+                        2020 © Health Record Stack
                     </div>
                 </div>
             </div>

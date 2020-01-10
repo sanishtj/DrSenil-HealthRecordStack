@@ -21,9 +21,9 @@ export class ExaminationsComponent implements OnInit {
           pulsefrom: [null, []],
           pulseto: [null, []],
           icterus: [false, []],
-          pollar: [false, []],
+          pallor: [false, []],
           ln: [false, []],
-          neurofibror: [false, []],
+          neurofibroma: [false, []],
           skinpatch: [false, []],
         }),
         neurologicalexaminations: this.formBuilder.group({

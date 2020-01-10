@@ -77,38 +77,47 @@ export class ComorbiditiesComponent implements OnInit {
       Key: 'Insulin',
       Value: 'Insulin'
     }, {
-      Key: 'AmylinomimeticDrug',
-      Value: 'Amylinomimetic Drug'
+      Key: 'OHA',
+      Value: 'OHA'
     },]
   }
 
   getAlcoholConsumption(): Array<ComboboxItem> {
     return [{
-      Key: 'OnceADay',
-      Value: 'Once a Day'
+      Key: 'NonAlcoholic',
+      Value: 'Non Alcoholic'
     }, {
-      Key: 'OnceaWeek',
-      Value: 'Once a Week'
+      Key: 'SocialDrinker',
+      Value: 'Social Drinker'
+    },
+    {
+      Key: 'ChronicAlcoholic',
+      Value: 'Chronic Alcoholic'
     },]
+   
   }
 
   getSmokePanConsumption(): Array<ComboboxItem> {
     return [{
-      Key: 'OnceADay',
-      Value: 'Once a Day'
+      Key: 'NonSmoker',
+      Value: 'Non Smoker'
     }, {
-      Key: 'OnceaWeek',
-      Value: 'Once a Week'
+      Key: 'OccasionalSmoker',
+      Value: 'Occasional Smoker'
+    },
+    {
+      Key: 'ChronicSmoker',
+      Value: 'Chronic Smoker'
     },]
   }
 
   getDrugConsumption(): Array<ComboboxItem> {
     return [{
-      Key: 'OnceADay',
-      Value: 'Once a Day'
+      Key: 'Addict',
+      Value: 'Addict'
     }, {
-      Key: 'OnceaWeek',
-      Value: 'Once a Week'
+      Key: 'NonAddict',
+      Value: 'Non Addict'
     },]
   }
 
