@@ -18,7 +18,7 @@ export class PatinetService {
       FullName: 'Sanish Joseph',
       Age: 34,
       Gender:'Male',
-      Mobile: '123456789',
+      Mobile: '1234567890',
       Email: 'sanyjose85@gmail.com'
     },
     {
@@ -27,7 +27,7 @@ export class PatinetService {
       FullName: 'Annie KO',
       Age: 62,
       Gender:'Female',
-      Mobile: '123456789',
+      Mobile: '1234567890',
       Email: 'annieko@gmail.com'
     },
     {
@@ -36,7 +36,7 @@ export class PatinetService {
       FullName: 'Shabini Rajadas',
       Age: 28,
       Gender:'Female',
-      Mobile: '123456789',
+      Mobile: '1234567890',
       Email: 'shabs@gmail.com'
     },
     {
@@ -45,7 +45,7 @@ export class PatinetService {
       FullName: 'Steve Antony',
       Age: 2,
       Gender:'Female',
-      Mobile: '123456789',
+      Mobile: '1234567890',
       Email: 'steveantony@gmail.com'
     },
     {
@@ -54,7 +54,7 @@ export class PatinetService {
       FullName: 'Ginish Joseph',
       Age: 35,
       Gender:'Female',
-      Mobile: '123456789',
+      Mobile: '1234567890',
       Email: 'ginish@gmail.com'
     }
   ];
@@ -86,7 +86,7 @@ export class PatinetService {
   }
 
   updatePatient(patient: Patientinfo): Observable<Patientinfo> {
-
+    debugger;
     const foundIndex = this.patientList.findIndex(x => x.Id === patient.Id);
     this.patientList[foundIndex] = patient;
     return of(patient);

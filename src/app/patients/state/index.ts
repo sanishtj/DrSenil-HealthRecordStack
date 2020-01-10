@@ -20,11 +20,7 @@ export const getCurrentPatient = createSelector(
 
       if (currentPatientId === '0' || currentPatientId == null) {
           return {
-              Id: null,
-              FullName: '',
-              age: 0,
-              Mobile: '',
-              Email: ''
+             
           };
       } else {
           return currentPatientId ? state.patients.find(p => p.Id === currentPatientId) : null;
