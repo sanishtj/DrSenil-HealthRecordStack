@@ -7,6 +7,7 @@ import { mergeMap, map, catchError } from 'rxjs/operators';
 
 import * as patientActions from './patient.actions';
 import { Patientinfo } from 'src/app/models/patientinfo';
+import { Patientsearch } from 'src/app/models/patientsearch';
 
 @Injectable()
 export class PatientEffects {
@@ -30,8 +31,9 @@ export class PatientEffects {
   @Effect()
   fetchPatients$: Observable<Action> = this.actions$.pipe(
     ofType(patientActions.PatientActionTypes.FETCHPATIENTS),
-    mergeMap(action =>
-      this.patientService.getPatients().pipe(
+    map((action: patientActions.FetchPatients) => action.payload),
+    mergeMap( (patientSearch: Patientsearch) =>
+      this.patientService.getPatients(patientSearch).pipe(
         map(patients => (new patientActions.FetchPatientsSuccess(patients))),
         catchError(err => of(new patientActions.FetchPatientsFail(err)))
       )

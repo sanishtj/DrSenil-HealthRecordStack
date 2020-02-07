@@ -19,7 +19,7 @@
           <td>{{ patient.Mobile }}</td>
           <td>{{ patient.Email }}</td>
           <td><a (click)="EditPatient(patient)">Edit</a></td>
-          <td><a (click)="RemovePatient(patient)">Remove</a></td>
+          <td><a (click)="SetCurrentPatient(patient);open(content);">Remove</a></td>
           <td><a (click)="AddConsultation(patient)">Add Consultation</a></td>
       </tr>
   </tbody>
@@ -29,3 +29,20 @@
     </tr>
   <tbody>
 </table>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Remove Patient</h5>
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true"><i class="fal fa-times"></i></span>
+    </button>
+</div>
+<div class="modal-body">
+    Modal text description...
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('close button click')">Close</button>
+    <button type="button" class="btn btn-primary" (click)="RemovePatient();modal.close('Save click')" >Save changes</button>
+</div>
+</ng-template>
+

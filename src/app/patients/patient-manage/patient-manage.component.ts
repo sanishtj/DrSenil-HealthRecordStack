@@ -54,7 +54,7 @@ export class PatientManageComponent implements OnInit {
     ngOnInit() {
         this.route.paramMap.subscribe(params => {
             const id: string = params.get('id');
-            debugger;
+            
             if (id != null && id !== "0") {
                 this.isEdit = true;
                 this.store.pipe(select(fromPatients.getCurrentPatient)).subscribe((patient : Patientinfo) => {
@@ -79,7 +79,7 @@ export class PatientManageComponent implements OnInit {
     }
 
     submitForm(isContinue : boolean) {
-      debugger;
+      
         if (this.patientInfoForm.status === 'VALID') {
 
             const payload = new Patientinfo();
@@ -88,7 +88,7 @@ export class PatientManageComponent implements OnInit {
             payload.Gender = this.gender.value;
             payload.Mobile = this.mobile.value;
             payload.Email = this.email.value;
-            debugger;
+            
             if (!this.isEdit) {
                 this.store.dispatch(new AddPatient(payload));
                 if (isContinue) 
@@ -118,7 +118,7 @@ export class PatientManageComponent implements OnInit {
     }
 
     updatePatient() {
-      debugger;
+      
         this.submitForm(false);
         
     }

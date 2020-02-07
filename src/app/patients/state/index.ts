@@ -17,7 +17,7 @@ export const getCurrentPatient = createSelector(
   getPatientFeatureState,
   getcurrentPatientId,
   (state, currentPatientId) => {
-
+      
       if (currentPatientId === '0' || currentPatientId == null) {
           return {
              

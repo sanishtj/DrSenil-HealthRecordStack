@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Patientinfo } from '../models/patientinfo';
+import { Patientsearch } from '../models/patientsearch';
 
 @Injectable({
   providedIn: 'root'
@@ -61,7 +62,8 @@ export class PatinetService {
 
   constructor(private http: HttpClient) {}
 
-  getPatients(): Observable<Patientinfo[]> {
+  getPatients(patientSearch: Patientsearch): Observable<Patientinfo[]> {
+    //Pass params to actual API
     return of(this.patientList);
   }
 
@@ -86,7 +88,7 @@ export class PatinetService {
   }
 
   updatePatient(patient: Patientinfo): Observable<Patientinfo> {
-    debugger;
+    
     const foundIndex = this.patientList.findIndex(x => x.Id === patient.Id);
     this.patientList[foundIndex] = patient;
     return of(patient);

@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Patientinfo } from 'src/app/models/patientinfo';
+import { Patientsearch } from 'src/app/models/patientsearch';
 
 
 export enum PatientActionTypes {
@@ -41,7 +42,7 @@ export class InitializeCurrentPatient implements Action {
 
 export class FetchPatients implements Action {
   readonly type = PatientActionTypes.FETCHPATIENTS;
-  constructor() {}
+  constructor(public payload: Patientsearch) {}
 }
 
 export class FetchPatientsSuccess implements Action {

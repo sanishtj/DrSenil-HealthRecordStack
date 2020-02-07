@@ -65,7 +65,7 @@ export class HrsTextboxComponent implements ControlValueAccessor {
     }
 
     writeValue(value) {
-        debugger;
+        
         if (!value) 
             value = '';
         

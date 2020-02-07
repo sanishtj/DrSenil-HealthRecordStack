@@ -47,7 +47,7 @@ export class ConsulationManageComponent implements OnInit {
   }
 
   handlePatientDetails() {
-    debugger;
+    
     let patientId = this.route.snapshot.paramMap.get('id');
 
     this.store.dispatch(new GetCurrentPatient(patientId));

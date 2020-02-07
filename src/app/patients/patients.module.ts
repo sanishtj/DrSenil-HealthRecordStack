@@ -12,6 +12,7 @@ import { reducer } from './state/patient.reducer';
 import { PatientEffects } from './state/patient.effects';
 import { PatientListDatatableComponent } from './patient-list-datatable/patient-list-datatable.component';
 import { DataTablesModule } from 'angular-datatables';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { DataTablesModule } from 'angular-datatables';
     EffectsModule.forFeature(
       [ PatientEffects ]
     ),
+    NgbModule,
     DataTablesModule
   ]
 })

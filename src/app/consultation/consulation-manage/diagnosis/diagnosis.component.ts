@@ -33,7 +33,7 @@ export class DiagnosisComponent implements OnInit {
   }
 
   addMedicine(): void {
-    debugger;
+    
     this.medicines = (this.diagnosisForm.controls.treatment as FormGroup).controls.medicines as FormArray;
     this.medicines.push(this.createItem());
   }
