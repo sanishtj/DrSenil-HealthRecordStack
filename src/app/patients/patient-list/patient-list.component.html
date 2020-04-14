@@ -1,93 +1,94 @@
 <hrs-widget>
-    <div widget-header="widget-header">
-        <h2>Search Patients</h2>
-    </div>
-    <div widget-content="widget-content">
-        <form [formGroup]="searchForm">
-            <hrs-content-container>
-                <div class="row">
-                    <div class="col-12">
-                        <hrs-form-group controlname="name" controllabel="Name">
-                            <hrs-textbox type="text" id="name" placeholder="" formControlName="name"></hrs-textbox>
-                        </hrs-form-group>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <hrs-form-group controlname="mobile" controllabel="Mobile">
-                            <hrs-textbox type="text" id="mobile" placeholder="" formControlName="mobile"></hrs-textbox>
-                        </hrs-form-group>
-                    </div>
-                    <div class="col-6">
-                        <hrs-form-group controlname="email" controllabel="Email">
-                            <hrs-textbox type="text" id="email" placeholder="" formControlName="email"></hrs-textbox>
-                        </hrs-form-group>
-                    </div>
-                </div>
+  <div widget-header="widget-header">
+    <h2>Search Patients</h2>
+  </div>
+  <div widget-content="widget-content">
+    <form [formGroup]="searchForm">
+      <hrs-content-container>
+        <div class="row">
+          <div class="col-12">
+            <hrs-form-group controlname="name" controllabel="Name">
+              <hrs-textbox type="text" id="name" placeholder="" formControlName="name"></hrs-textbox>
+            </hrs-form-group>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <hrs-form-group controlname="mobile" controllabel="Mobile">
+              <hrs-textbox type="text" id="mobile" placeholder="" formControlName="mobile"></hrs-textbox>
+            </hrs-form-group>
+          </div>
+          <div class="col-6">
+            <hrs-form-group controlname="email" controllabel="Email">
+              <hrs-textbox type="text" id="email" placeholder="" formControlName="email"></hrs-textbox>
+            </hrs-form-group>
+          </div>
+        </div>
 
-                <div class="row">
-                    <div class="col-12">
-                        <button id="search" type="button" (click)="searchPatients()" class="btn btn-lg btn-success waves-effect waves-themed float-right">
-                            Search
-                        </button>
-                    </div>
-                </div>
-            </hrs-content-container>
-        </form>
-    </div>
+        <div class="row">
+          <div class="col-12">
+            <button id="search" type="button" (click)="searchPatients()"
+              class="btn btn-lg btn-success waves-effect waves-themed float-right">
+              Search
+            </button>
+          </div>
+        </div>
+      </hrs-content-container>
+    </form>
+  </div>
 </hrs-widget>
 
 
 <hrs-widget>
-    <div widget-header="widget-header">
-        <h2>Patient List</h2>
-    </div>
-    <div
-        widget-content="widget-content">
-        <!-- <hrs-patient-list-datatable [patients]="patients$ | async"></hrs-patient-list-datatable> -->
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Mobile</th>
-                    <th scope="col">Email</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let patient of patients$ | async">
-                    <th scope="row">{{ patient.Id }}</th>
-                    <td>
-                        <ngb-highlight [result]="patient.FullName"></ngb-highlight>
-                    </td>
-                    <td>
-                      <ngb-highlight [result]="patient.Age" ></ngb-highlight>
-                    </td>
-                    <td>
-                      <ngb-highlight [result]="patient.Mobile" ></ngb-highlight>
-                    </td>
-                    <td>
-                      <ngb-highlight [result]="patient.Email"></ngb-highlight>
-                    </td>
-                    <td><a (click)="EditPatient(patient)">Edit</a></td>
+  <div widget-header="widget-header">
+    <h2>Patient List</h2>
+  </div>
+  <div widget-content="widget-content">
+    <!-- <hrs-patient-list-datatable [patients]="patients$ | async"></hrs-patient-list-datatable> -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Mobile</th>
+          <th scope="col">Email</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let patient of patients$ | async">
+          <th scope="row">{{ patient.Id }}</th>
+          <td>
+            <ngb-highlight [result]="patient.FullName"></ngb-highlight>
+          </td>
+          <td>
+            <ngb-highlight [result]="patient.Age"></ngb-highlight>
+          </td>
+          <td>
+            <ngb-highlight [result]="patient.Mobile"></ngb-highlight>
+          </td>
+          <td>
+            <ngb-highlight [result]="patient.Email"></ngb-highlight>
+          </td>
+          <!-- <td><a (click)="EditPatient(patient)">Edit</a></td>
                     <td><a (click)="SetCurrentPatient(patient);open(content);">Remove</a></td>
-                    <td><a (click)="AddConsultation(patient)">Add Consultation</a></td>                    
-                </tr>
-            </tbody>
-        </table>
+                    <td><a (click)="AddConsultation(patient)">Add Consultation</a></td>                     -->
+        </tr>
+      </tbody>
+    </table>
 
-        <div class="d-flex justify-content-between p-2">
-            <ngb-pagination [collectionSize]="total$ | async" [(page)]="pageNumber" (pageChange)="onPageChanged($event)" [pageSize]="pageSize"></ngb-pagination>
+    <div class="d-flex justify-content-between p-2">
+      <ngb-pagination [collectionSize]="total$ | async" [(page)]="pageNumber" (pageChange)="onPageChanged($event)"
+        [pageSize]="pageSize"></ngb-pagination>
 
-            <!-- <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+      <!-- <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
                 <option [ngValue]="2">2 items per page</option>
                 <option [ngValue]="4">4 items per page</option>
                 <option [ngValue]="6">6 items per page</option>
             </select> -->
-        </div>
     </div>
+  </div>
 </hrs-widget>

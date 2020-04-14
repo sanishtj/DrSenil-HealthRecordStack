@@ -12,7 +12,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
-import { PatientsearchresultComponent } from './models/patientsearchresult/patientsearchresult.component';
+//import { PatientsearchresultComponent } from './models/patientsearchresult/patientsearchresult.component';
 
 
 
@@ -21,7 +21,7 @@ import { PatientsearchresultComponent } from './models/patientsearchresult/patie
     AppComponent,
     PreloginContainerComponent,
     PostloginContainerComponent,
-    PatientsearchresultComponent    
+    // PatientsearchresultComponent
   ],
   imports: [
     BrowserModule,

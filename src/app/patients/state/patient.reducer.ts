@@ -1,9 +1,10 @@
 import {PatientActionTypes, PatientActions} from './patient.actions';
 import {Patientsearchresult} from 'src/app/models/patientsearchresult';
 import {Patientsearch} from 'src/app/models/patientsearch';
+import { Patientinfo } from 'src/app/models/patientinfo';
 
-export interface PatientState {
-    patientSearchResult: Patientsearchresult;
+export interface PatientState { // patientSearchResult: Patientsearchresult;
+    patients: Patientinfo[],
     patientSearch: Patientsearch;
     currentPatientId: string | null;
     error: string;
@@ -11,10 +12,11 @@ export interface PatientState {
 
 
 const initialState: PatientState = {
-    patientSearchResult: {
-        patients: [],
-        total: 0
-    },
+    // patientSearchResult: {
+    //     patients: [],
+    //     total: 0
+    // },
+    patients: [],
     patientSearch: {
         pageNumber: 1,
         pageSize: 10
