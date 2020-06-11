@@ -44,7 +44,7 @@
               "node_modules/datatables.net-dt/css/jquery.dataTables.css",
               "src/styles.css"
             ],
-            "scripts": [              
+            "scripts": [
               "node_modules/pace-js/pace.min.js",
               "node_modules/jquery/dist/jquery.js",
               "node_modules/datatables.net/js/jquery.dataTables.js",
@@ -143,6 +143,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "DrSenil"
+    }
+  },
+  "defaultProject": "DrSenil",
+  "cli": {
+    "analytics": "a4f945f1-0240-4d4b-820d-2d12b22ff7f2"
+  }
 }
